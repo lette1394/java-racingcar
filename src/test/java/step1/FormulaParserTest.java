@@ -11,10 +11,10 @@ class FormulaParserTest {
     @Test
     @DisplayName("throw exception when input is empty formula string")
     void shouldThrowExceptionWhenInputIsEmtpyString() {
-        final String emtpyFormula = "";
+        final String emptyFormula = "";
 
         assertThatExceptionOfType(IllegalFormulaFormatException.class)
-                .isThrownBy(() -> FormulaParserFactory.sequentialInteger().parse(emtpyFormula));
+                .isThrownBy(() -> FormulaParserFactory.sequentialInteger().parse(emptyFormula));
     }
 
     @Test
