@@ -1,3 +1,3 @@
 public interface MovementPolicy {
-  boolean test();
+  boolean next();
 }
