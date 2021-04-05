@@ -13,7 +13,12 @@ public class RacingGame {
     };
 
     AtomicInteger index = new AtomicInteger();
-    MovementPolicy movementPolicy = () -> booleans[index.getAndIncrement()];
+    MovementPolicy movementPolicy = () -> {
+      if (booleans[index.getAndIncrement()]) {
+        return Movement.FORWARD;
+      }
+      return Movement.STAY;
+    };
 
     final Round round = new Round(movementPolicy);
     for (int i = 0; i < 5; i++) {

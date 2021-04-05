@@ -10,13 +10,13 @@ public class Round {
   Car car3 = new Car();
 
   public void run() {
-    if (movementPolicy.next()) {
+    if (movementPolicy.next() == Movement.FORWARD) {
       car1.go();
     }
-    if (movementPolicy.next()) {
+    if (movementPolicy.next() == Movement.FORWARD) {
       car2.go();
     }
-    if (movementPolicy.next()) {
+    if (movementPolicy.next() == Movement.FORWARD) {
       car3.go();
     }
   }
