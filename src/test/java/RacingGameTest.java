@@ -7,7 +7,8 @@ public class RacingGameTest {
   void test1() {
     final RacingGame racingGame = new RacingGame();
 
-    final String expected = "-\n"
+    final String expected = ""
+      + "-\n"
       + "-\n"
       + "-\n"
       + "\n"
@@ -27,6 +28,9 @@ public class RacingGameTest {
       + "----\n"
       + "-----";
 
-    assertThat(racingGame.run()).isEqualTo(expected);
+
+    racingGame.run();
+    racingGame.print();
+    assertThat(racingGame.print()).isEqualTo(expected);
   }
 }
