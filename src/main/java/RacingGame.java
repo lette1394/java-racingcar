@@ -1,26 +1,18 @@
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.Arrays;
 
 public class RacingGame {
   final StringBuilder sb = new StringBuilder();
 
   public void run() {
-    boolean[] booleans = new boolean[]{
-      true, true, true,
-      true, false, true,
-      true, true, true,
-      true, true, true,
-      false, true, true,
-    };
+    MovementPolicy policy = new PredefinedMovementPolicy(Arrays.asList(
+      Movement.FORWARD, Movement.FORWARD, Movement.FORWARD,
+      Movement.FORWARD, Movement.STAY, Movement.FORWARD,
+      Movement.FORWARD, Movement.FORWARD, Movement.FORWARD,
+      Movement.FORWARD, Movement.FORWARD, Movement.FORWARD,
+      Movement.STAY, Movement.FORWARD, Movement.FORWARD
+    ));
 
-    AtomicInteger index = new AtomicInteger();
-    MovementPolicy movementPolicy = () -> {
-      if (booleans[index.getAndIncrement()]) {
-        return Movement.FORWARD;
-      }
-      return Movement.STAY;
-    };
-
-    final Round round = new Round(movementPolicy);
+    final Round round = new Round(policy);
     for (int i = 0; i < 5; i++) {
       round.run();
       sb.append(round.print());
