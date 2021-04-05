@@ -13,9 +13,9 @@ public class RacingGame {
     };
 
     AtomicInteger index = new AtomicInteger();
-    CanIGo canIGo = () -> booleans[index.getAndIncrement()];
+    MovementPolicy movementPolicy = () -> booleans[index.getAndIncrement()];
 
-    final Round round = new Round(canIGo);
+    final Round round = new Round(movementPolicy);
     for (int i = 0; i < 5; i++) {
       round.run();
       sb.append(round.print());

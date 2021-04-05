@@ -1,8 +1,8 @@
 public class Round {
-  private final CanIGo canIGo;
+  private final MovementPolicy movementPolicy;
 
-  public Round(CanIGo canIGo) {
-    this.canIGo = canIGo;
+  public Round(MovementPolicy movementPolicy) {
+    this.movementPolicy = movementPolicy;
   }
 
   Car car1 = new Car();
@@ -10,13 +10,13 @@ public class Round {
   Car car3 = new Car();
 
   public void run() {
-    if (canIGo.test()) {
+    if (movementPolicy.test()) {
       car1.go();
     }
-    if (canIGo.test()) {
+    if (movementPolicy.test()) {
       car2.go();
     }
-    if (canIGo.test()) {
+    if (movementPolicy.test()) {
       car3.go();
     }
   }
