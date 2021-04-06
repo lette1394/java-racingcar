@@ -1,21 +1,28 @@
 package step1;
 
+import static step1.Contracts.requires;
+
 public class Car {
-  private final int location;
+  private final long location;
+  private final MovementPolicy movementPolicy;
+
+  public Car(long location, MovementPolicy movementPolicy) {
+    requires(location >= 0, "location >= 0");
+    requires(movementPolicy != null, "movementPolicy != null");
+
+    this.location = location;
+    this.movementPolicy = movementPolicy;
+  }
 
   public Car() {
-    this(0);
+    this(0L, () -> Movement.FORWARD);
   }
 
-  private Car(int location) {
-    this.location = location;
+  public Car move() {
+    return new Car(location + 1, movementPolicy);
   }
 
-  public Car moveForward() {
-    return new Car(location + 1);
-  }
-
-  public int currentLocation() {
+  public long currentLocation() {
     return location;
   }
 }
