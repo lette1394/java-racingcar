@@ -1,3 +1,5 @@
+package step1;
+
 public class ContractsViolationException extends RuntimeException {
   public ContractsViolationException() {
     super();

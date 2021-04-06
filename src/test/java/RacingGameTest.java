@@ -1,6 +1,7 @@
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
+import step1.RacingGame;
 
 public class RacingGameTest {
   @Test

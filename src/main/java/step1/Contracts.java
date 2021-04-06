@@ -1,3 +1,5 @@
+package step1;
+
 public class Contracts {
   public static void requires(boolean truthy, String message) {
     if (truthy) {
