@@ -24,6 +24,7 @@ public class RacingGame {
   public void run() {
     final Round round = new Round(movementPolicy);
     for (int i = 0; i < tries; i++) {
+
       round.run();
       sb.append(round.print());
 
