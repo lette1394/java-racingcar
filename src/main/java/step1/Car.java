@@ -18,10 +18,6 @@ public class Car {
     this(0L, movementPolicy);
   }
 
-  public Car() {
-    this(() -> Movement.FORWARD);
-  }
-
   public Car move() {
     return new Car(location + 1, movementPolicy);
   }
