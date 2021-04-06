@@ -25,15 +25,15 @@ public class Round {
 
   public String print() {
     StringBuilder sb = new StringBuilder(256);
-    for (int i = 0; i < car1.currentLocation(); i++) {
+    for (int i = 0; i < car1.location(); i++) {
       sb.append("-");
     }
     sb.append("\n");
-    for (int i = 0; i < car2.currentLocation(); i++) {
+    for (int i = 0; i < car2.location(); i++) {
       sb.append("-");
     }
     sb.append("\n");
-    for (int i = 0; i < car3.currentLocation(); i++) {
+    for (int i = 0; i < car3.location(); i++) {
       sb.append("-");
     }
 

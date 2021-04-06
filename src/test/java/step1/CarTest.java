@@ -19,7 +19,7 @@ class CarTest {
     long times = 3L;
     tryMove(times);
 
-    assertThat(subject.currentLocation(), is(times));
+    assertThat(subject.location(), is(times));
   }
 
   private void tryMove(long times) {

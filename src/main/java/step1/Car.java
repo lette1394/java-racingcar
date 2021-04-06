@@ -26,7 +26,7 @@ public class Car {
     return new Car(location + 1, movementPolicy);
   }
 
-  public long currentLocation() {
+  public long location() {
     return location;
   }
 }
