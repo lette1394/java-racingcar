@@ -14,8 +14,12 @@ public class Car {
     this.movementPolicy = movementPolicy;
   }
 
+  public Car(MovementPolicy movementPolicy) {
+    this(0L, movementPolicy);
+  }
+
   public Car() {
-    this(0L, () -> Movement.FORWARD);
+    this(() -> Movement.FORWARD);
   }
 
   public Car move() {
