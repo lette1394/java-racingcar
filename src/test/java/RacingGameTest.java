@@ -6,7 +6,10 @@ import step1.RacingGame;
 public class RacingGameTest {
   @Test
   void test1() {
-    final RacingGame racingGame = new RacingGame();
+    final RacingGame racingGame = RacingGame.builder()
+      .cars(3)
+      .tries(5)
+      .build();
 
     final String expected = ""
       + "-\n"
@@ -28,7 +31,6 @@ public class RacingGameTest {
       + "----\n"
       + "----\n"
       + "-----";
-
 
     racingGame.run();
     racingGame.print();
