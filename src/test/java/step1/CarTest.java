@@ -1,5 +1,6 @@
 package step1;
 
+import static common.TestFixtures.anyPositiveLong;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
@@ -15,8 +16,8 @@ class CarTest {
   }
 
   @Test
-  void test1() {
-    long times = 3L;
+  void alwaysGo() {
+    long times = anyPositiveLong();
     tryMove(times);
 
     assertThat(subject.location(), is(times));
@@ -39,4 +40,6 @@ class CarTest {
   private MovementPolicy alwaysStay() {
     return () -> Movement.STAY;
   }
+
+
 }
