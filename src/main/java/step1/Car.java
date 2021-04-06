@@ -7,7 +7,7 @@ public class Car {
     location++;
   }
 
-  public int location() {
+  public int currentLocation() {
     return location;
   }
 }
