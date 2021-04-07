@@ -1,6 +1,8 @@
 package step1;
 
 import static common.CarAssertions.movedExactly;
+import static common.CarFixtures.aCarWith;
+import static common.CarFixtures.alwaysForward;
 import static common.TestFixtures.anyPositiveLong;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -12,7 +14,7 @@ class CarForwardTest {
 
   @BeforeEach
   void beforeEach() {
-    aCar = subject(alwaysForward());
+    aCar = aCarWith(alwaysForward());
   }
 
   @Test
@@ -23,21 +25,9 @@ class CarForwardTest {
     assertThat(aCar, movedExactly(times));
   }
 
-  private void move(long times) {
+  public void move(long times) {
     for (int i = 0; i < times; i++) {
       aCar = aCar.move();
     }
-  }
-
-  private Car subject(MovementPolicy movementPolicy) {
-    return new Car(movementPolicy);
-  }
-
-  private MovementPolicy alwaysForward() {
-    return () -> Movement.FORWARD;
-  }
-
-  private MovementPolicy alwaysStay() {
-    return () -> Movement.STAY;
   }
 }
