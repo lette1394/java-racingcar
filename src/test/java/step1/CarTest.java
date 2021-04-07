@@ -1,31 +1,31 @@
 package step1;
 
+import static common.CarAssertions.movedExactly;
 import static common.TestFixtures.anyPositiveLong;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class CarTest {
-  Car subject;
+  Car aCar;
 
   @BeforeEach
   void beforeEach() {
-    subject = subject(alwaysForward());
+    aCar = subject(alwaysForward());
   }
 
   @Test
   void alwaysGo() {
     long times = anyPositiveLong();
-    tryMove(times);
+    move(times);
 
-    assertThat(subject.location(), is(times));
+    assertThat(aCar, movedExactly(times));
   }
 
-  private void tryMove(long times) {
+  private void move(long times) {
     for (int i = 0; i < times; i++) {
-      subject = subject.move();
+      aCar = aCar.move();
     }
   }
 
@@ -40,6 +40,4 @@ class CarTest {
   private MovementPolicy alwaysStay() {
     return () -> Movement.STAY;
   }
-
-
 }
