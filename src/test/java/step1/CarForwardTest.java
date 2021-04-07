@@ -7,7 +7,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class CarTest {
+class CarForwardTest {
   Car aCar;
 
   @BeforeEach
