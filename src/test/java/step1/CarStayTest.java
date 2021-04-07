@@ -17,8 +17,7 @@ class CarStayTest extends BaseCarTest {
 
   @Test
   void stay() {
-    long times = anyPositiveLong();
-    triggerMove(times);
+    triggerMove(anyPositiveLong());
 
     assertThat(aCar, didntMoveAtAll());
   }
