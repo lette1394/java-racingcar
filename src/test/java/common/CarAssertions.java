@@ -27,4 +27,8 @@ public class CarAssertions {
       }
     };
   }
+
+  public static Matcher<Car> didntMoveAtAll() {
+    return movedExactly(0);
+  }
 }

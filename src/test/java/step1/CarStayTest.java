@@ -1,25 +1,25 @@
 package step1;
 
-import static common.CarAssertions.movedExactly;
+import static common.CarAssertions.didntMoveAtAll;
 import static common.CarFixtures.aCarWith;
-import static common.CarFixtures.alwaysForward;
+import static common.CarFixtures.alwaysStay;
 import static common.TestFixtures.anyPositiveLong;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class CarForwardTest extends BaseCarTest {
+class CarStayTest extends BaseCarTest {
   @BeforeEach
   void beforeEach() {
-    aCar = aCarWith(alwaysForward());
+    aCar = aCarWith(alwaysStay());
   }
 
   @Test
-  void alwaysGo() {
+  void stay() {
     long times = anyPositiveLong();
     triggerMove(times);
 
-    assertThat(aCar, movedExactly(times));
+    assertThat(aCar, didntMoveAtAll());
   }
 }
