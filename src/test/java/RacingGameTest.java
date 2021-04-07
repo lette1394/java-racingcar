@@ -2,6 +2,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
+import step1.CarFactory;
 import step1.Movement;
 import step1.MovementPolicy;
 import step1.PredefinedMovementPolicy;
@@ -18,10 +19,11 @@ public class RacingGameTest {
       Movement.STAY, Movement.FORWARD, Movement.FORWARD
     ));
 
+    final CarFactory carFactory = new CarFactory(movementPolicy);
     final RacingGame racingGame = RacingGame.builder()
       .cars(3)
       .tries(5)
-      .movementPolicy(movementPolicy)
+      .carFactory(carFactory)
       .build();
 
     final String expected = ""
