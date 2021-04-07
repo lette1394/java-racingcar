@@ -19,7 +19,10 @@ public class Car {
   }
 
   public Car move() {
-    return new Car(location + 1, movementPolicy);
+    if (movementPolicy.next() == Movement.FORWARD) {
+      return new Car(location + 1, movementPolicy);
+    }
+    return this;
   }
 
   public long location() {

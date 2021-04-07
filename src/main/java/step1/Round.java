@@ -15,15 +15,9 @@ public class Round {
   }
 
   public void run() {
-    if (movementPolicy.next() == Movement.FORWARD) {
-      car1 = car1.move();
-    }
-    if (movementPolicy.next() == Movement.FORWARD) {
-      car2 = car2.move();
-    }
-    if (movementPolicy.next() == Movement.FORWARD) {
-      car3 = car3.move();
-    }
+    car1 = car1.move();
+    car2 = car2.move();
+    car3 = car3.move();
   }
 
   public String print() {
