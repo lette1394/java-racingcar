@@ -1,39 +1,36 @@
 package step1;
 
+import static step1.Contracts.requires;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Round {
-  private final MovementPolicy movementPolicy;
+  private final List<Car> cars;
 
-  Car car1;
-  Car car2;
-  Car car3;
-
-  public Round(MovementPolicy movementPolicy) {
-    this.movementPolicy = movementPolicy;
-    car1 = new Car(movementPolicy);
-    car2 = new Car(movementPolicy);
-    car3 = new Car(movementPolicy);
+  public Round(List<Car> cars) {
+    requires(cars.size() > 0, "cars.size() > 0");
+    this.cars = cars;
   }
 
-  public void run() {
-    car1 = car1.move();
-    car2 = car2.move();
-    car3 = car3.move();
+  public Round moveAll() {
+    return new Round(nextCars());
   }
 
   public String print() {
-    StringBuilder sb = new StringBuilder(256);
-    for (int i = 0; i < car1.location(); i++) {
-      sb.append("-");
-    }
-    sb.append("\n");
-    for (int i = 0; i < car2.location(); i++) {
-      sb.append("-");
-    }
-    sb.append("\n");
-    for (int i = 0; i < car3.location(); i++) {
-      sb.append("-");
-    }
+    return cars
+      .stream()
+      .map(car -> {
+        final StringBuilder sb = new StringBuilder(256);
+        for (int i = 0; i < car.location(); i++) {
+          sb.append("-");
+        }
+        return sb.toString();
+      })
+      .collect(Collectors.joining("\n"));
+  }
 
-    return sb.toString();
+  private List<Car> nextCars() {
+    return cars.stream().map(Car::move).collect(Collectors.toList());
   }
 }

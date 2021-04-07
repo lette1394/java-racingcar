@@ -2,6 +2,7 @@ package step1;
 
 import static step1.Contracts.requires;
 
+import java.util.List;
 import lombok.Builder;
 
 public class RacingGame {
@@ -22,10 +23,14 @@ public class RacingGame {
   }
 
   public void run() {
-    final Round round = new Round(movementPolicy);
+    Round round = new Round(List.of(
+      new Car(movementPolicy),
+      new Car(movementPolicy),
+      new Car(movementPolicy)
+      ));
     for (int i = 0; i < tries; i++) {
 
-      round.run();
+      round = round.moveAll();
       sb.append(round.print());
 
       if (i == tries - 1) {
