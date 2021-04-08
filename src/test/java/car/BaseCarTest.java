@@ -1,4 +1,4 @@
-package step2;
+package car;
 
 public class BaseCarTest {
   Car aCar;

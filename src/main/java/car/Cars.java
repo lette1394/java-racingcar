@@ -1,6 +1,6 @@
-package step2;
+package car;
 
-import static step2.Contracts.requires;
+import static car.Contracts.requires;
 
 import java.util.List;
 import java.util.stream.Collectors;

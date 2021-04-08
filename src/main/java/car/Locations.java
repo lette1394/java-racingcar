@@ -1,4 +1,4 @@
-package step2;
+package car;
 
 import java.util.List;
 import java.util.stream.Stream;

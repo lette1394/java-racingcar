@@ -1,4 +1,4 @@
-package step2;
+package car;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;

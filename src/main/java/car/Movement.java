@@ -1,4 +1,4 @@
-package step2;
+package car;
 
 public enum Movement {
   STAY,
