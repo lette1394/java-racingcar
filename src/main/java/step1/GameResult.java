@@ -8,15 +8,15 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class GameResult {
-  private final List<Cars> results;
+  private final List<Locations> results;
 
   public int rounds() {
     return results.size();
   }
 
-  public List<Location> locationsAt(int round) {
+  public Locations locationsAt(int round) {
     requires(round >= 0, "round >= 0");
-    return results.get(round).locations();
+    return results.get(round);
   }
 
   public String print() {
@@ -25,8 +25,8 @@ public class GameResult {
       .collect(Collectors.joining("\n\n"));
   }
 
-  public static String print(Cars cars) {
-    return cars.locations().stream()
+  public static String print(Locations locations) {
+    return locations.stream()
       .map(location -> {
         final StringBuilder sb = new StringBuilder(256);
         for (int i = 0; i < location.getValue(); i++) {

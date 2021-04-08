@@ -23,12 +23,12 @@ public class RacingGame {
   }
 
   public GameResult run() {
-    final List<Cars> history = new ArrayList<>();
+    final List<Locations> history = new ArrayList<>();
 
     Cars cars = new Cars(carFactory.create(this.cars));
     for (int i = 0; i < tries; i++) {
       cars = cars.moveAll();
-      history.add(cars);
+      history.add(cars.locations());
     }
 
     return new GameResult(history);

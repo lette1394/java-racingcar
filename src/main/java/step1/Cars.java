@@ -17,10 +17,10 @@ public class Cars {
     return new Cars(nextCars());
   }
 
-  public List<Location> locations() {
-    return cars.stream()
+  public Locations locations() {
+    return new Locations(cars.stream()
       .map(Car::location)
-      .collect(Collectors.toList());
+      .collect(Collectors.toList()));
   }
 
   private List<Car> nextCars() {
