@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 public class Locations {
   private final List<Location> locations;
 
-  public Stream<Location> stream() {
-    return locations.stream();
+  public Stream<Long> stream() {
+    return locations.stream().map(Location::getValue);
   }
 }

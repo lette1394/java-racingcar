@@ -4,6 +4,7 @@ import static car.Contracts.requires;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Cars {
   private final List<Car> cars;
@@ -20,7 +21,12 @@ public class Cars {
   public Locations locations() {
     return new Locations(cars.stream()
       .map(Car::location)
+      .map(Location::at)
       .collect(Collectors.toList()));
+  }
+
+  public Stream<Car> stream() {
+    return cars.stream();
   }
 
   private List<Car> nextCars() {

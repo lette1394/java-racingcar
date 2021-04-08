@@ -10,14 +10,14 @@ public class CarFactory {
     this.movementPolicy = movementPolicy;
   }
 
-  public Car create() {
-    return new Car(movementPolicy);
+  public Car create(String name) {
+    return new Car(new Name(name), movementPolicy);
   }
 
-  public List<Car> create(int size) {
+  public List<Car> create(Names names) {
     final List<Car> result = new ArrayList<>();
-    for (int i = 0; i < size; i++) {
-      result.add(create());
+    for (String name : names) {
+      result.add(create(name));
     }
     return result;
   }

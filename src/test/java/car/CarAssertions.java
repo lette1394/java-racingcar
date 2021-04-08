@@ -9,7 +9,7 @@ public class CarAssertions {
     return new TypeSafeDiagnosingMatcher<>() {
       @Override
       protected boolean matchesSafely(Car item, Description mismatchDescription) {
-        if (item.location().equals(Location.at(times))) {
+        if (item.location() == times) {
           return true;
         }
         mismatchDescription
