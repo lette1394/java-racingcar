@@ -22,11 +22,11 @@ public class RacingGame {
   }
 
   public void run() {
-    Round round = new Round(carFactory.create(cars));
+    Cars cars = new Cars(carFactory.create(this.cars));
     for (int i = 0; i < tries; i++) {
 
-      round = round.moveAll();
-      sb.append(round.print());
+      cars = cars.moveAll();
+      sb.append(cars.print());
 
       if (i == tries - 1) {
         return;

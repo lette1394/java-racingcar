@@ -7,7 +7,7 @@ import step1.Car;
 
 public class CarAssertions {
   public static Matcher<Car> movedExactly(long times) {
-    return new TypeSafeDiagnosingMatcher<Car>() {
+    return new TypeSafeDiagnosingMatcher<>() {
       @Override
       protected boolean matchesSafely(Car item, Description mismatchDescription) {
         if (item.location() == times) {
