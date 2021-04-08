@@ -7,7 +7,9 @@ import step1.GameResult;
 import step1.Movement;
 import step1.MovementPolicy;
 import step1.PredefinedMovementPolicy;
+import step1.Printer;
 import step1.RacingGame;
+import step1.StringPrinter;
 
 public class RacingGameTest {
   @Test
@@ -49,6 +51,7 @@ public class RacingGameTest {
       + "-----";
 
     final GameResult gameResult = racingGame.run();
-    assertThat(gameResult.print()).isEqualTo(expected);
+    final Printer printer = new StringPrinter();
+    assertThat(printer.print(gameResult)).isEqualTo(expected);
   }
 }

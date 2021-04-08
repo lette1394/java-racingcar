@@ -3,7 +3,7 @@ package step1;
 import static step1.Contracts.requires;
 
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -19,21 +19,7 @@ public class GameResult {
     return results.get(round);
   }
 
-  public String print() {
-    return results.stream()
-      .map(GameResult::print)
-      .collect(Collectors.joining("\n\n"));
-  }
-
-  public static String print(Locations locations) {
-    return locations.stream()
-      .map(location -> {
-        final StringBuilder sb = new StringBuilder(256);
-        for (int i = 0; i < location.getValue(); i++) {
-          sb.append("-");
-        }
-        return sb.toString();
-      })
-      .collect(Collectors.joining("\n"));
+  public Stream<Locations> locationsStream() {
+    return results.stream();
   }
 }
