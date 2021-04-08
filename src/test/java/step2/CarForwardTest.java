@@ -1,8 +1,8 @@
 package step2;
 
-import static common.CarAssertions.movedExactly;
-import static common.CarFixtures.aCarWith;
-import static common.CarFixtures.alwaysForward;
+import static step2.CarAssertions.movedExactly;
+import static step2.CarFixtures.aCarWith;
+import static step2.CarFixtures.alwaysForward;
 import static common.TestFixtures.anyPositiveLong;
 import static org.hamcrest.MatcherAssert.assertThat;
 

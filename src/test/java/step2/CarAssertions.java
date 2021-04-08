@@ -1,10 +1,8 @@
-package common;
+package step2;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeDiagnosingMatcher;
-import step2.Car;
-import step2.Location;
 
 public class CarAssertions {
   public static Matcher<Car> movedExactly(long times) {
