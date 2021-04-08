@@ -17,16 +17,10 @@ public class Cars {
     return new Cars(nextCars());
   }
 
-  public String print() {
+  public List<Long> locations() {
     return cars.stream()
-      .map(car -> {
-        final StringBuilder sb = new StringBuilder(256);
-        for (int i = 0; i < car.location(); i++) {
-          sb.append("-");
-        }
-        return sb.toString();
-      })
-      .collect(Collectors.joining("\n"));
+      .map(Car::location)
+      .collect(Collectors.toList());
   }
 
   private List<Car> nextCars() {

@@ -3,6 +3,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 import step1.CarFactory;
+import step1.GameResult;
 import step1.Movement;
 import step1.MovementPolicy;
 import step1.PredefinedMovementPolicy;
@@ -47,8 +48,7 @@ public class RacingGameTest {
       + "----\n"
       + "-----";
 
-    racingGame.run();
-    racingGame.print();
-    assertThat(racingGame.print()).isEqualTo(expected);
+    final GameResult gameResult = racingGame.run();
+    assertThat(gameResult.print()).isEqualTo(expected);
   }
 }

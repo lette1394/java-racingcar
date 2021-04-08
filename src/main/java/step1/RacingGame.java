@@ -2,10 +2,11 @@ package step1;
 
 import static step1.Contracts.requires;
 
+import java.util.ArrayList;
+import java.util.List;
 import lombok.Builder;
 
 public class RacingGame {
-  private final StringBuilder sb = new StringBuilder();
   private final int cars;
   private final int tries;
   private final CarFactory carFactory;
@@ -21,21 +22,15 @@ public class RacingGame {
     this.carFactory = carFactory;
   }
 
-  public void run() {
+  public GameResult run() {
+    final List<Cars> history = new ArrayList<>();
+
     Cars cars = new Cars(carFactory.create(this.cars));
     for (int i = 0; i < tries; i++) {
-
       cars = cars.moveAll();
-      sb.append(cars.print());
-
-      if (i == tries - 1) {
-        return;
-      }
-      sb.append("\n\n");
+      history.add(cars);
     }
-  }
 
-  public String print() {
-    return sb.toString();
+    return new GameResult(history);
   }
 }
