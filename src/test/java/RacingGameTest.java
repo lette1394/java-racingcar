@@ -9,6 +9,7 @@ import car.PredefinedMovementPolicy;
 import car.Printer;
 import car.RacingGame;
 import car.StringPrinter;
+import car.StringWinnerPrinter;
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +21,7 @@ public class RacingGameTest {
       Movement.FORWARD, Movement.STAY, Movement.FORWARD,
       Movement.FORWARD, Movement.FORWARD, Movement.FORWARD,
       Movement.FORWARD, Movement.FORWARD, Movement.FORWARD,
-      Movement.STAY, Movement.FORWARD, Movement.FORWARD
+      Movement.FORWARD, Movement.FORWARD, Movement.FORWARD
     ));
     final Names names = Names.names(new String[]{"pobi", "crong", "honux"});
     final CarFactory carFactory = new CarFactory(movementPolicy);
@@ -47,12 +48,36 @@ public class RacingGameTest {
       + "crong : ---\n"
       + "honux : ----\n"
       + "\n"
-      + "pobi : ----\n"
+      + "pobi : -----\n"
       + "crong : ----\n"
       + "honux : -----";
 
     final GameResult gameResult = racingGame.run();
     final Printer printer = new StringPrinter();
+    assertThat(printer.print(gameResult)).isEqualTo(expected);
+  }
+
+  @Test
+  void test2() {
+    final MovementPolicy movementPolicy = new PredefinedMovementPolicy(Arrays.asList(
+      Movement.FORWARD, Movement.FORWARD, Movement.FORWARD,
+      Movement.FORWARD, Movement.STAY, Movement.FORWARD,
+      Movement.FORWARD, Movement.FORWARD, Movement.FORWARD,
+      Movement.FORWARD, Movement.FORWARD, Movement.FORWARD,
+      Movement.FORWARD, Movement.FORWARD, Movement.FORWARD
+    ));
+    final Names names = Names.names(new String[]{"pobi", "crong", "honux"});
+    final CarFactory carFactory = new CarFactory(movementPolicy);
+    final RacingGame racingGame = RacingGame.builder()
+      .names(names)
+      .tries(5)
+      .carFactory(carFactory)
+      .build();
+
+    final String expected = "pobi, honux가 최종 우승했습니다.";
+
+    final GameResult gameResult = racingGame.run();
+    final Printer printer = new StringWinnerPrinter();
     assertThat(printer.print(gameResult)).isEqualTo(expected);
   }
 }

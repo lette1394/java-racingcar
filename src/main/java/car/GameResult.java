@@ -26,4 +26,13 @@ public class GameResult {
   public Stream<Cars> carsStream() {
     return results.stream();
   }
+
+  public Cars winner() {
+    requires(results.size() > 0, "results.size() > 0");
+    return lastRound().winner();
+  }
+
+  private Cars lastRound() {
+    return results.get(rounds() - 1);
+  }
 }
