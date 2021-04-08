@@ -1,4 +1,4 @@
-package step1;
+package step2;
 
 import static common.CarAssertions.didntMoveAtAll;
 import static common.CarFixtures.aCarWith;

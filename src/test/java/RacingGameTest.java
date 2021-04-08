@@ -2,14 +2,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
-import step1.CarFactory;
-import step1.GameResult;
-import step1.Movement;
-import step1.MovementPolicy;
-import step1.PredefinedMovementPolicy;
-import step1.Printer;
-import step1.RacingGame;
-import step1.StringPrinter;
+import step2.CarFactory;
+import step2.GameResult;
+import step2.Movement;
+import step2.MovementPolicy;
+import step2.PredefinedMovementPolicy;
+import step2.Printer;
+import step2.RacingGame;
+import step2.StringPrinter;
 
 public class RacingGameTest {
   @Test

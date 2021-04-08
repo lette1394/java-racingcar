@@ -1,4 +1,4 @@
-package step1;
+package step2;
 
 public class Contracts {
   public static void requires(boolean truthy, String message) {

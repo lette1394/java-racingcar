@@ -1,8 +1,8 @@
 package common;
 
-import step1.Car;
-import step1.Movement;
-import step1.MovementPolicy;
+import step2.Car;
+import step2.Movement;
+import step2.MovementPolicy;
 
 public class CarFixtures {
   public static MovementPolicy alwaysForward() {

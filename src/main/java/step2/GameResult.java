@@ -1,6 +1,6 @@
-package step1;
+package step2;
 
-import static step1.Contracts.requires;
+import static step2.Contracts.requires;
 
 import java.util.List;
 import java.util.stream.Stream;

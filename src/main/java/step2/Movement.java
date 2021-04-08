@@ -1,4 +1,4 @@
-package step1;
+package step2;
 
 public enum Movement {
   STAY,
