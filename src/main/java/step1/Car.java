@@ -1,31 +1,24 @@
 package step1;
 
-import static step1.Contracts.requires;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 public class Car {
-  private final long location;
+  private final Location location;
   private final MovementPolicy movementPolicy;
 
-  public Car(long location, MovementPolicy movementPolicy) {
-    requires(location >= 0, "location >= 0");
-    requires(movementPolicy != null, "movementPolicy != null");
-
-    this.location = location;
-    this.movementPolicy = movementPolicy;
-  }
-
   public Car(MovementPolicy movementPolicy) {
-    this(0L, movementPolicy);
+    this(Location.ZERO, movementPolicy);
   }
 
   public Car move() {
     if (movementPolicy.next() == Movement.FORWARD) {
-      return new Car(location + 1, movementPolicy);
+      return new Car(location.increase(), movementPolicy);
     }
     return this;
   }
 
-  public long location() {
+  public Location location() {
     return location;
   }
 }

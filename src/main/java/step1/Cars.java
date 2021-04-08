@@ -17,7 +17,7 @@ public class Cars {
     return new Cars(nextCars());
   }
 
-  public List<Long> locations() {
+  public List<Location> locations() {
     return cars.stream()
       .map(Car::location)
       .collect(Collectors.toList());
