@@ -31,6 +31,12 @@ public class Cars extends BaseStream<Car> {
       .collect(Collectors.toList()));
   }
 
+  public Names names() {
+    return new Names(cars.stream()
+      .map(Car::name)
+      .collect(Collectors.toList()));
+  }
+
   private List<Car> nextCars() {
     return cars.stream().map(Car::move).collect(Collectors.toList());
   }

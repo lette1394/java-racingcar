@@ -6,6 +6,10 @@ public class TestFixtures {
   }
 
   public static String anyNonBlankString() {
-    return "<any-non-blank-string>";
+    return anyNonBlankString(10);
+  }
+
+  public static String anyNonBlankString(int size) {
+    return "hello";
   }
 }

@@ -1,7 +1,9 @@
 package racing.domain;
 
+import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
 
+@EqualsAndHashCode(of = "name")
 @RequiredArgsConstructor
 public class Car {
   private final Name name;
