@@ -1,8 +1,10 @@
 package racing.runner;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 import static racing.domain.Movement.FORWARD;
 import static racing.domain.Movement.STAY;
+import static racing.runner.GameResultAssertions.winnerIs;
 
 import java.util.Arrays;
 import java.util.List;
@@ -55,7 +57,7 @@ public class GameTest {
 
     final GameResult gameResult = game.run();
     final Printer printer = new StringPrinter();
-    assertThat(printer.print(gameResult)).isEqualTo(expected);
+    assertThat(printer.print(gameResult), is(expected));
   }
 
   @Test
@@ -75,30 +77,8 @@ public class GameTest {
       .carFactory(carFactory)
       .build();
 
-    final String expected = ""
-      + "pobi : -\n"
-      + "crong : -\n"
-      + "honux : -\n"
-      + "\n"
-      + "pobi : --\n"
-      + "crong : -\n"
-      + "honux : --\n"
-      + "\n"
-      + "pobi : ---\n"
-      + "crong : --\n"
-      + "honux : ---\n"
-      + "\n"
-      + "pobi : ----\n"
-      + "crong : ---\n"
-      + "honux : ----\n"
-      + "\n"
-      + "pobi : -----\n"
-      + "crong : ----\n"
-      + "honux : -----";
-
     final GameResult gameResult = game.run();
-    final Printer printer = new StringPrinter();
-    assertThat(printer.print(gameResult)).isEqualTo(expected);
+    assertThat(gameResult, winnerIs("pobi", "honux"));
   }
 
 
@@ -123,6 +103,6 @@ public class GameTest {
 
     final GameResult gameResult = game.run();
     final Printer printer = new StringWinnerPrinter();
-    assertThat(printer.print(gameResult)).isEqualTo(expected);
+    assertThat(printer.print(gameResult), is(expected));
   }
 }
