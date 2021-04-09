@@ -5,12 +5,13 @@ import static racing.Contracts.requires;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import racing.BaseStream;
 
-public class Cars {
+public class Cars extends BaseStream<Car> {
   private final List<Car> cars;
 
   public Cars(List<Car> cars) {
+    super(cars.stream());
     requires(cars.size() > 0, "cars.size() > 0");
     this.cars = cars;
   }
@@ -35,10 +36,6 @@ public class Cars {
     return new Cars(cars.stream()
       .filter(car -> car.location() == maxScore)
       .collect(Collectors.toList()));
-  }
-
-  public Stream<Car> stream() {
-    return cars.stream();
   }
 
   private List<Car> nextCars() {

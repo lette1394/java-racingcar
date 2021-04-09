@@ -14,7 +14,6 @@ public class GameResultMatchers {
       @Override
       protected boolean matchesSafely(GameResult item, Description mismatchDescription) {
         final Set<String> winnerNames = item.winner()
-          .stream()
           .map(Car::name)
           .collect(Collectors.toSet());
 
@@ -43,7 +42,6 @@ public class GameResultMatchers {
       protected boolean matchesSafely(GameResult item, Description mismatchDescription) {
         final Set<String> candidates = Arrays.stream(winnerNames).collect(Collectors.toSet());
         final Set<String> winnerNames = item.winner()
-          .stream()
           .map(Car::name)
           .collect(Collectors.toSet());
 

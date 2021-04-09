@@ -14,8 +14,7 @@ public class StringPrinter implements Printer {
   }
 
   public static String print(Cars cars) {
-    return cars.stream()
-      .map(car -> {
+    return cars.map(car -> {
         final StringBuilder sb = new StringBuilder(256);
         sb.append(car.name());
         sb.append(" : ");
