@@ -1,10 +1,13 @@
-package racing.domain;
+package racing.runner;
 
 import static racing.Contracts.requires;
 
 import java.util.ArrayList;
 import java.util.List;
 import lombok.Builder;
+import racing.domain.CarFactory;
+import racing.domain.Cars;
+import racing.domain.GameResult;
 
 public class RacingGame {
   private final List<String> names;

@@ -1,17 +1,18 @@
+package racing.runner;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Test;
 import racing.domain.CarFactory;
 import racing.domain.GameResult;
 import racing.domain.Movement;
 import racing.domain.MovementPolicy;
 import racing.domain.PredefinedMovementPolicy;
 import racing.view.Printer;
-import racing.domain.RacingGame;
 import racing.view.StringPrinter;
 import racing.view.StringWinnerPrinter;
-import java.util.Arrays;
-import org.junit.jupiter.api.Test;
 
 public class RacingGameTest {
   @Test
