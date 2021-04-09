@@ -1,6 +1,4 @@
-package racing;
-
-import racing.domain.Car;
+package racing.domain;
 
 public class BaseCarTest {
   Car aCar;

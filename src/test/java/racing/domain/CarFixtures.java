@@ -1,10 +1,6 @@
-package racing;
+package racing.domain;
 
 import static common.TestFixtures.anyNonBlankString;
-
-import racing.domain.Car;
-import racing.domain.Movement;
-import racing.domain.MovementPolicy;
 
 public class CarFixtures {
   public static MovementPolicy alwaysForward() {
