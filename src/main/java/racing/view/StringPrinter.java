@@ -1,6 +1,8 @@
-package racing;
+package racing.view;
 
 import java.util.stream.Collectors;
+import racing.domain.Cars;
+import racing.domain.GameResult;
 
 public class StringPrinter implements Printer {
 

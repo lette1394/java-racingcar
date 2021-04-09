@@ -1,4 +1,4 @@
-package racing;
+package racing.domain;
 
 public enum Movement {
   STAY,

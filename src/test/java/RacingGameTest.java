@@ -1,15 +1,15 @@
 import static org.assertj.core.api.Assertions.assertThat;
 
-import racing.CarFactory;
-import racing.GameResult;
-import racing.Movement;
-import racing.MovementPolicy;
-import racing.Names;
-import racing.PredefinedMovementPolicy;
-import racing.Printer;
-import racing.RacingGame;
-import racing.StringPrinter;
-import racing.StringWinnerPrinter;
+import racing.domain.CarFactory;
+import racing.domain.GameResult;
+import racing.domain.Movement;
+import racing.domain.MovementPolicy;
+import racing.domain.Names;
+import racing.domain.PredefinedMovementPolicy;
+import racing.view.Printer;
+import racing.domain.RacingGame;
+import racing.view.StringPrinter;
+import racing.view.StringWinnerPrinter;
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
