@@ -3,8 +3,10 @@ package racing.runner;
 import static racing.Contracts.requires;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
 import lombok.RequiredArgsConstructor;
+import racing.domain.Car;
 import racing.domain.Cars;
 
 @RequiredArgsConstructor
@@ -17,6 +19,10 @@ public class GameResult {
 
   public Stream<Cars> carsStream() {
     return results.stream();
+  }
+
+  public Optional<Car> soleWinner() {
+    return lastRound().soleWinner();
   }
 
   public Cars winner() {

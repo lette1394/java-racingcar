@@ -4,6 +4,7 @@ import static java.util.stream.Collectors.toUnmodifiableSet;
 import static racing.Contracts.requires;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 import lombok.EqualsAndHashCode;
 import racing.BaseStream;
@@ -11,6 +12,10 @@ import racing.BaseStream;
 @EqualsAndHashCode(callSuper = false)
 public class Names extends BaseStream<String> implements Iterable<String> {
   private final Set<Name> names;
+
+  public Names(String... names) {
+    this(List.of(names));
+  }
 
   public Names(Collection<String> names) {
     super(names.stream());
@@ -30,5 +35,9 @@ public class Names extends BaseStream<String> implements Iterable<String> {
 
   public boolean containsAll(Collection<String> candidates) {
     return equals(new Names(candidates));
+  }
+
+  public boolean contains(String winnerName) {
+    return names.contains(new Name(winnerName));
   }
 }

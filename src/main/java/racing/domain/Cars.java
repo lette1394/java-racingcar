@@ -4,6 +4,7 @@ import static racing.Contracts.requires;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import racing.BaseStream;
 
@@ -29,6 +30,14 @@ public class Cars extends BaseStream<Car> {
     return new Cars(cars.stream()
       .filter(car -> car.location() == maxScore)
       .collect(Collectors.toList()));
+  }
+
+  public Optional<Car> soleWinner() {
+    final List<Car> winners = winner().cars;
+    if (winners.size() == 1) {
+      return Optional.of(winners.get(0));
+    }
+    return Optional.empty();
   }
 
   public Names names() {
