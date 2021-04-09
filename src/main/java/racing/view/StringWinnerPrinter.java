@@ -2,7 +2,7 @@ package racing.view;
 
 import java.util.stream.Collectors;
 import racing.domain.Car;
-import racing.domain.GameResult;
+import racing.runner.GameResult;
 
 public class StringWinnerPrinter implements Printer {
   @Override
