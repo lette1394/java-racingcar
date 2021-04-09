@@ -14,7 +14,7 @@ import racing.view.Printer;
 import racing.view.StringPrinter;
 import racing.view.StringWinnerPrinter;
 
-public class RacingGameTest {
+public class GameTest {
   @Test
   void test1() {
     final MovementPolicy movementPolicy = new PredefinedMovementPolicy(Arrays.asList(
@@ -26,7 +26,7 @@ public class RacingGameTest {
     ));
     final List<String> names = List.of("pobi", "crong", "honux");
     final CarFactory carFactory = new CarFactory(movementPolicy);
-    final RacingGame racingGame = RacingGame.builder()
+    final Game game = Game.builder()
       .names(names)
       .tries(5)
       .carFactory(carFactory)
@@ -53,7 +53,7 @@ public class RacingGameTest {
       + "crong : ----\n"
       + "honux : -----";
 
-    final GameResult gameResult = racingGame.run();
+    final GameResult gameResult = game.run();
     final Printer printer = new StringPrinter();
     assertThat(printer.print(gameResult)).isEqualTo(expected);
   }
@@ -69,7 +69,7 @@ public class RacingGameTest {
     ));
     final List<String> names = List.of("pobi", "crong", "honux");
     final CarFactory carFactory = new CarFactory(movementPolicy);
-    final RacingGame racingGame = RacingGame.builder()
+    final Game game = Game.builder()
       .names(names)
       .tries(5)
       .carFactory(carFactory)
@@ -96,7 +96,7 @@ public class RacingGameTest {
       + "crong : ----\n"
       + "honux : -----";
 
-    final GameResult gameResult = racingGame.run();
+    final GameResult gameResult = game.run();
     final Printer printer = new StringPrinter();
     assertThat(printer.print(gameResult)).isEqualTo(expected);
   }
@@ -113,7 +113,7 @@ public class RacingGameTest {
     ));
     final List<String> names = List.of("pobi", "crong", "honux");
     final CarFactory carFactory = new CarFactory(movementPolicy);
-    final RacingGame racingGame = RacingGame.builder()
+    final Game game = Game.builder()
       .names(names)
       .tries(5)
       .carFactory(carFactory)
@@ -121,7 +121,7 @@ public class RacingGameTest {
 
     final String expected = "pobi, honux가 최종 우승했습니다.";
 
-    final GameResult gameResult = racingGame.run();
+    final GameResult gameResult = game.run();
     final Printer printer = new StringWinnerPrinter();
     assertThat(printer.print(gameResult)).isEqualTo(expected);
   }
