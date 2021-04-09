@@ -5,14 +5,15 @@ import static racing.Contracts.requires;
 
 import java.util.Collection;
 import java.util.Set;
+import lombok.EqualsAndHashCode;
 import racing.BaseStream;
 
-class Names extends BaseStream<String> {
+@EqualsAndHashCode(callSuper = false)
+public class Names extends BaseStream<String> implements Iterable<String> {
   private final Set<Name> names;
 
   public Names(Collection<String> names) {
     super(names.stream());
-
     final Set<Name> collected = names.stream()
       .map(Name::new)
       .collect(toUnmodifiableSet());
@@ -21,5 +22,13 @@ class Names extends BaseStream<String> {
     requires(collected.size() == names.size(), "collected.size() == names.size()");
 
     this.names = collected;
+  }
+
+  public int size() {
+    return names.size();
+  }
+
+  public boolean containsAll(Collection<String> candidates) {
+    return equals(new Names(candidates));
   }
 }

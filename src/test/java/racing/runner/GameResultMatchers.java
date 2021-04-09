@@ -7,6 +7,7 @@ import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeDiagnosingMatcher;
 import racing.domain.Car;
+import racing.domain.Names;
 
 public class GameResultMatchers {
   static Matcher<GameResult> winnerIs(String winnerName) {
@@ -39,11 +40,9 @@ public class GameResultMatchers {
   static Matcher<GameResult> winnerIs(String... winnerNames) {
     return new TypeSafeDiagnosingMatcher<>() {
       @Override
-      protected boolean matchesSafely(GameResult item, Description mismatchDescription) {
+      protected boolean matchesSafely(GameResult gameResult, Description mismatchDescription) {
         final Set<String> candidates = Arrays.stream(winnerNames).collect(Collectors.toSet());
-        final Set<String> winnerNames = item.winner()
-          .map(Car::name)
-          .collect(Collectors.toSet());
+        final Names winnerNames = gameResult.winner().names();
 
         if (winnerNames.size() == candidates.size() && winnerNames.containsAll(candidates)) {
           return true;
