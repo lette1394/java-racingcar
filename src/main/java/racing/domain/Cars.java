@@ -49,4 +49,10 @@ public class Cars extends BaseStream<Car> {
   private List<Car> nextCars() {
     return cars.stream().map(Car::move).collect(Collectors.toList());
   }
+
+  public Optional<Car> findCarOwnedBy(String name) {
+    return cars.stream()
+      .filter(car -> car.name().equals(name))
+      .findAny();
+  }
 }
