@@ -1,6 +1,6 @@
 package racing.domain;
 
-import static racing.domain.CarAssertions.movedExactly;
+import static racing.domain.CarMatchers.movedExactly;
 import static racing.domain.CarFixtures.aCarWith;
 import static racing.domain.CarFixtures.alwaysForward;
 import static common.TestFixtures.anyPositiveLong;

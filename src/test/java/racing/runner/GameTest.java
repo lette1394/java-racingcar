@@ -4,7 +4,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static racing.domain.Movement.FORWARD;
 import static racing.domain.Movement.STAY;
-import static racing.runner.GameResultAssertions.winnerIs;
+import static racing.runner.GameResultMatchers.winnerIs;
 
 import java.util.Arrays;
 import java.util.List;

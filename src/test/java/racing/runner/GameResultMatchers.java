@@ -8,7 +8,7 @@ import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeDiagnosingMatcher;
 import racing.domain.Car;
 
-public class GameResultAssertions {
+public class GameResultMatchers {
   static Matcher<GameResult> winnerIs(String winnerName) {
     return new TypeSafeDiagnosingMatcher<>() {
       @Override

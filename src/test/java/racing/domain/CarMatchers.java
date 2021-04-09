@@ -4,7 +4,7 @@ import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeDiagnosingMatcher;
 
-public class CarAssertions {
+public class CarMatchers {
   static Matcher<Car> movedExactly(long times) {
     return new TypeSafeDiagnosingMatcher<>() {
       @Override
