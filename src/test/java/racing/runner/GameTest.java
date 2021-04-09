@@ -8,7 +8,7 @@ import static racing.domain.Movement.STAY;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
-import racing.domain.CarFactory;
+import racing.domain.Car;
 import racing.domain.MovementPolicy;
 import racing.domain.PredefinedMovementPolicy;
 import racing.view.Printer;
@@ -25,12 +25,13 @@ public class GameTest {
       FORWARD, FORWARD, FORWARD,
       FORWARD, FORWARD, FORWARD
     ));
-    final List<String> names = List.of("pobi", "crong", "honux");
-    final CarFactory carFactory = new CarFactory(movementPolicy);
+    final List<Car> cars = List.of(
+      new Car("pobi", movementPolicy),
+      new Car("crong", movementPolicy),
+      new Car("honux", movementPolicy));
     final Game game = Game.builder()
-      .names(names)
       .tries(5)
-      .carFactory(carFactory)
+      .cars(cars)
       .build();
 
     final String expected = ""
@@ -68,12 +69,13 @@ public class GameTest {
       FORWARD, FORWARD, FORWARD,
       FORWARD, FORWARD, FORWARD
     ));
-    final List<String> names = List.of("pobi", "crong", "honux");
-    final CarFactory carFactory = new CarFactory(movementPolicy);
+    final List<Car> cars = List.of(
+      new Car("pobi", movementPolicy),
+      new Car("crong", movementPolicy),
+      new Car("honux", movementPolicy));
     final Game game = Game.builder()
-      .names(names)
       .tries(5)
-      .carFactory(carFactory)
+      .cars(cars)
       .build();
 
     final String expected = "pobi, honux가 최종 우승했습니다.";

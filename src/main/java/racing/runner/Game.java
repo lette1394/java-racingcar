@@ -5,29 +5,26 @@ import static racing.Contracts.requires;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.Builder;
-import racing.domain.CarFactory;
+import racing.domain.Car;
 import racing.domain.Cars;
 
 public class Game {
-  private final List<String> names;
   private final int tries;
-  private final CarFactory carFactory;
+  private final List<Car> cars;
 
   @Builder
-  public Game(List<String> names, int tries, CarFactory carFactory) {
-    requires(names.size() > 0, "names.size() > 0");
+  public Game(int tries, List<Car> cars) {
     requires(tries > 0, "tries > 0");
-    requires(carFactory != null, "carFactory != null");
+    requires(cars != null, "carFactory != null");
 
-    this.names = names;
     this.tries = tries;
-    this.carFactory = carFactory;
+    this.cars = cars;
   }
 
   public GameResult run() {
     final List<Cars> history = new ArrayList<>();
 
-    Cars cars = new Cars(carFactory.create(names));
+    Cars cars = new Cars(this.cars);
     for (int i = 0; i < tries; i++) {
       cars = cars.moveAll();
       history.add(cars);

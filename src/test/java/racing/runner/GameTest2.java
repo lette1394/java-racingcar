@@ -1,38 +1,27 @@
 package racing.runner;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static racing.domain.Movement.FORWARD;
-import static racing.domain.Movement.STAY;
 import static racing.runner.GameResultMatchers.locatedAt;
 import static racing.runner.GameResultMatchers.winnerIs;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import racing.domain.Car;
-import racing.domain.CarFactory;
-import racing.domain.MovementPolicy;
-import racing.domain.PredefinedMovementPolicy;
+import racing.domain.MaximumLocationPolicy;
 
 public class GameTest2 {
   GameResult gameResult;
 
   @Test
   void test1() {
-    final MovementPolicy movementPolicy = new PredefinedMovementPolicy(Arrays.asList(
-      FORWARD, FORWARD, FORWARD,
-      FORWARD, STAY, FORWARD,
-      FORWARD, FORWARD, FORWARD,
-      FORWARD, FORWARD, FORWARD,
-      FORWARD, FORWARD, FORWARD
-    ));
-    final List<String> names = List.of("pobi", "crong", "honux");
-    final CarFactory carFactory = new CarFactory(movementPolicy);
+    final List<Car> cars = List.of(
+      new Car("pobi", new MaximumLocationPolicy(5)),
+      new Car("crong", new MaximumLocationPolicy(4)),
+      new Car("honux", new MaximumLocationPolicy(5)));
     final Game game = Game.builder()
-      .names(names)
       .tries(5)
-      .carFactory(carFactory)
+      .cars(cars)
       .build();
     gameResult = game.run();
 
