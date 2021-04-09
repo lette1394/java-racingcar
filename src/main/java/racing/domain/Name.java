@@ -3,7 +3,7 @@ package racing.domain;
 import lombok.Value;
 
 @Value
-public class Name {
+class Name {
   String value;
 
   @Override

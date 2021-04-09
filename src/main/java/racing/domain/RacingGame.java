@@ -5,18 +5,14 @@ import static racing.Contracts.requires;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.Builder;
-import racing.domain.CarFactory;
-import racing.domain.Cars;
-import racing.domain.GameResult;
-import racing.domain.Names;
 
 public class RacingGame {
-  private final Names names;
+  private final List<String> names;
   private final int tries;
   private final CarFactory carFactory;
 
   @Builder
-  public RacingGame(Names names, int tries, CarFactory carFactory) {
+  public RacingGame(List<String> names, int tries, CarFactory carFactory) {
     requires(names.size() > 0, "names.size() > 0");
     requires(tries > 0, "tries > 0");
     requires(carFactory != null, "carFactory != null");

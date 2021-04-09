@@ -5,7 +5,6 @@ import static common.TestFixtures.anyNonBlankString;
 import racing.domain.Car;
 import racing.domain.Movement;
 import racing.domain.MovementPolicy;
-import racing.domain.Name;
 
 public class CarFixtures {
   public static MovementPolicy alwaysForward() {
@@ -17,6 +16,6 @@ public class CarFixtures {
   }
 
   public static Car aCarWith(MovementPolicy movementPolicy) {
-    return new Car(new Name(anyNonBlankString()), movementPolicy);
+    return new Car(anyNonBlankString(), movementPolicy);
   }
 }

@@ -5,7 +5,7 @@ import java.util.stream.Stream;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class Locations {
+class Locations {
   private final List<Location> locations;
 
   public Stream<Long> stream() {

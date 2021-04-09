@@ -1,10 +1,10 @@
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.List;
 import racing.domain.CarFactory;
 import racing.domain.GameResult;
 import racing.domain.Movement;
 import racing.domain.MovementPolicy;
-import racing.domain.Names;
 import racing.domain.PredefinedMovementPolicy;
 import racing.view.Printer;
 import racing.domain.RacingGame;
@@ -23,7 +23,7 @@ public class RacingGameTest {
       Movement.FORWARD, Movement.FORWARD, Movement.FORWARD,
       Movement.FORWARD, Movement.FORWARD, Movement.FORWARD
     ));
-    final Names names = Names.names(new String[]{"pobi", "crong", "honux"});
+    final List<String> names = List.of("pobi", "crong", "honux");
     final CarFactory carFactory = new CarFactory(movementPolicy);
     final RacingGame racingGame = RacingGame.builder()
       .names(names)
@@ -66,7 +66,7 @@ public class RacingGameTest {
       Movement.FORWARD, Movement.FORWARD, Movement.FORWARD,
       Movement.FORWARD, Movement.FORWARD, Movement.FORWARD
     ));
-    final Names names = Names.names(new String[]{"pobi", "crong", "honux"});
+    final List<String> names = List.of("pobi", "crong", "honux");
     final CarFactory carFactory = new CarFactory(movementPolicy);
     final RacingGame racingGame = RacingGame.builder()
       .names(names)

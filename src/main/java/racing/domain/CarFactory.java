@@ -11,10 +11,10 @@ public class CarFactory {
   }
 
   public Car create(String name) {
-    return new Car(new Name(name), movementPolicy);
+    return new Car(name, movementPolicy);
   }
 
-  public List<Car> create(Names names) {
+  public List<Car> create(List<String> names) {
     final List<Car> result = new ArrayList<>();
     for (String name : names) {
       result.add(create(name));

@@ -5,7 +5,7 @@ import static racing.Contracts.requires;
 import lombok.Value;
 
 @Value
-public class Location {
+class Location {
   public static Location ZERO = new Location(0L);
 
   long value;

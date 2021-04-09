@@ -8,8 +8,8 @@ public class Car {
   private final Location location;
   private final MovementPolicy movementPolicy;
 
-  public Car(Name name, MovementPolicy movementPolicy) {
-    this(name, Location.ZERO, movementPolicy);
+  public Car(String name, MovementPolicy movementPolicy) {
+    this(new Name(name), Location.ZERO, movementPolicy);
   }
 
   public String name() {

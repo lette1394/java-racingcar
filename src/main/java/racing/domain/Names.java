@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class Names implements Iterable<String> {
+class Names implements Iterable<String> {
   private final List<Name> names;
 
   public static Names names(String[] names) {
