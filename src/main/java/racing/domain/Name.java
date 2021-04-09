@@ -1,10 +1,17 @@
 package racing.domain;
 
-import lombok.Value;
+import static racing.Contracts.requires;
 
-@Value
+import lombok.EqualsAndHashCode;
+
+@EqualsAndHashCode
 class Name {
-  String value;
+  private final String value;
+
+  public Name(String value) {
+    requires(value.length() <= 5, "value.length() <= 5");
+    this.value = value;
+  }
 
   @Override
   public String toString() {
