@@ -1,6 +1,6 @@
-package car;
+package racing;
 
-import static car.Contracts.requires;
+import static racing.Contracts.requires;
 
 import java.util.List;
 import java.util.stream.Stream;

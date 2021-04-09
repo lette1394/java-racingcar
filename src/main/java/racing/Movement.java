@@ -1,4 +1,4 @@
-package car;
+package racing;
 
 public enum Movement {
   STAY,

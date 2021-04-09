@@ -1,4 +1,4 @@
-package car;
+package racing;
 
 public class ContractsViolationException extends RuntimeException {
   public ContractsViolationException() {

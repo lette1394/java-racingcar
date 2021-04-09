@@ -1,4 +1,4 @@
-package car;
+package racing;
 
 @FunctionalInterface
 public interface Printer {

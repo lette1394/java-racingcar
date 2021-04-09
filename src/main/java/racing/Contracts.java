@@ -1,4 +1,4 @@
-package car;
+package racing;
 
 public class Contracts {
   public static void requires(boolean truthy, String message) {

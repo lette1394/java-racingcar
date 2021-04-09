@@ -1,4 +1,4 @@
-package car;
+package racing;
 
 import static common.TestFixtures.anyNonBlankString;
 

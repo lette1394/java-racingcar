@@ -1,8 +1,8 @@
-package car;
+package racing;
 
-import static car.CarAssertions.didntMoveAtAll;
-import static car.CarFixtures.aCarWith;
-import static car.CarFixtures.alwaysStay;
+import static racing.CarAssertions.didntMoveAtAll;
+import static racing.CarFixtures.aCarWith;
+import static racing.CarFixtures.alwaysStay;
 import static common.TestFixtures.anyPositiveLong;
 import static org.hamcrest.MatcherAssert.assertThat;
 

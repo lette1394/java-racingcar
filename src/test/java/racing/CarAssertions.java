@@ -1,4 +1,4 @@
-package car;
+package racing;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;

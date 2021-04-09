@@ -1,4 +1,4 @@
-package car;
+package racing;
 
 import java.util.List;
 import java.util.stream.Stream;

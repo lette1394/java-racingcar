@@ -1,4 +1,4 @@
-package car;
+package racing;
 
 public interface MovementPolicy {
   Movement next();
