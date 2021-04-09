@@ -20,13 +20,6 @@ public class Cars extends BaseStream<Car> {
     return new Cars(nextCars());
   }
 
-  public Locations locations() {
-    return new Locations(cars.stream()
-      .map(Car::location)
-      .map(Location::at)
-      .collect(Collectors.toList()));
-  }
-
   public Cars winner() {
     final long maxScore = cars.stream()
       .map(Car::location)
