@@ -23,7 +23,7 @@ public class Cars extends BaseStream<Car> implements Iterable<Car> {
     return new Cars(nextCars());
   }
 
-  public Cars winner() {
+  public Cars winners() {
     final long maxScore = cars.stream()
       .map(Car::location)
       .max(Comparator.naturalOrder())
@@ -35,7 +35,7 @@ public class Cars extends BaseStream<Car> implements Iterable<Car> {
   }
 
   public Optional<Car> soleWinner() {
-    final Set<Car> winners = winner().cars;
+    final Set<Car> winners = winners().cars;
     if (winners.size() == 1) {
       return Optional.of(winners.iterator().next());
     }

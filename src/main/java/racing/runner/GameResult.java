@@ -27,7 +27,7 @@ public class GameResult {
 
   public Cars winners() {
     requires(results.size() > 0, "results.size() > 0");
-    return lastRound().winner();
+    return lastRound().winners();
   }
 
   public Optional<Car> findCarOwnedBy(String name) {
