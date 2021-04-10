@@ -6,7 +6,7 @@ import static racing.domain.Movement.FORWARD;
 import static racing.domain.Movement.STAY;
 
 import java.util.Arrays;
-import java.util.List;
+import java.util.Set;
 import org.junit.jupiter.api.Test;
 import racing.domain.Car;
 import racing.domain.MovementPolicy;
@@ -25,7 +25,7 @@ public class GameTest {
       FORWARD, FORWARD, FORWARD,
       FORWARD, FORWARD, FORWARD
     ));
-    final List<Car> cars = List.of(
+    final Set<Car> cars = Set.of(
       new Car("pobi", movementPolicy),
       new Car("crong", movementPolicy),
       new Car("honux", movementPolicy));
@@ -69,7 +69,7 @@ public class GameTest {
       FORWARD, FORWARD, FORWARD,
       FORWARD, FORWARD, FORWARD
     ));
-    final List<Car> cars = List.of(
+    final Set<Car> cars = Set.of(
       new Car("pobi", movementPolicy),
       new Car("crong", movementPolicy),
       new Car("honux", movementPolicy));

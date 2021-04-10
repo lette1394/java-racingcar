@@ -1,37 +1,39 @@
 package racing.runner;
 
+import static common.TestFixtures.anyPositiveIntAtLeast;
+import static common.TestFixtures.anyPositiveLongAtMost;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static racing.runner.GameResultMatchers.locatedAt;
-import static racing.runner.GameResultMatchers.winnerIs;
+import static racing.domain.CarFixtures.anyCars;
+import static racing.runner.GameResultMatchers.winnersAre;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racing.domain.Car;
-import racing.domain.MaximumLocationPolicy;
 
 public class GameTest2 {
-  GameResult gameResult;
+  int winningLocation;
+
+  @BeforeEach
+  void beforeEach() {
+    winningLocation = anyPositiveIntAtLeast(2);
+  }
 
   @Test
   void test1() {
-    final List<Car> cars = List.of(
-      new Car("pobi", new MaximumLocationPolicy(5)),
-      new Car("crong", new MaximumLocationPolicy(4)),
-      new Car("honux", new MaximumLocationPolicy(5)));
+    final Set<Car> shouldBeWinners = anyCars(winningLocation);
+    final Set<Car> shouldBeLosers = anyCars(anyPositiveLongAtMost(winningLocation));
+    final Set<Car> allParticipants = Stream.concat(shouldBeWinners.stream(), shouldBeLosers.stream())
+      .collect(Collectors.toSet());
+
     final Game game = Game.builder()
-      .tries(5)
-      .cars(cars)
+      .tries(winningLocation)
+      .cars(allParticipants)
       .build();
-    gameResult = game.run();
+    final GameResult gameResult = game.run();
 
-    assertThat(gameResult, winnerIs("pobi", "honux"));
-    assertThat(aCar("pobi"), locatedAt(5));
-    assertThat(aCar("crong"), locatedAt(4));
-    assertThat(aCar("honux"), locatedAt(5));
-  }
-
-  private Optional<Car> aCar(String name) {
-    return gameResult.findCarOwnedBy(name);
+    assertThat(gameResult, winnersAre(shouldBeWinners));
   }
 }

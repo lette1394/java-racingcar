@@ -1,10 +1,12 @@
 package racing.runner;
 
 import java.util.Optional;
+import java.util.Set;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeDiagnosingMatcher;
 import racing.domain.Car;
+import racing.domain.Cars;
 import racing.domain.Names;
 
 public class GameResultMatchers {
@@ -21,7 +23,7 @@ public class GameResultMatchers {
 
         mismatchDescription
           .appendText("the game winner are ")
-          .appendValue(String.join(", ", gameResult.winner().names()));
+          .appendValue(String.join(", ", gameResult.winners().names()));
         return false;
       }
 
@@ -34,11 +36,11 @@ public class GameResultMatchers {
     };
   }
 
-  static Matcher<GameResult> winnerIs(String... expectedWinnerNames) {
+  static Matcher<GameResult> winnersAre(String... expectedWinnerNames) {
     return new TypeSafeDiagnosingMatcher<>() {
       @Override
       protected boolean matchesSafely(GameResult gameResult, Description mismatchDescription) {
-        final Names actualWinnerNames = gameResult.winner().names();
+        final Names actualWinnerNames = gameResult.winners().names();
         if (actualWinnerNames.equals(new Names(expectedWinnerNames))) {
           return true;
         }
@@ -54,6 +56,35 @@ public class GameResultMatchers {
         description
           .appendText("the game winner are ")
           .appendValue(expectedWinnerNames);
+      }
+    };
+  }
+
+  static Matcher<GameResult> winnersAre(Car... expectedWinners) {
+    return winnersAre(Set.of(expectedWinners));
+  }
+
+  static Matcher<GameResult> winnersAre(Set<Car> expectedWinners) {
+    final Cars cars = new Cars(expectedWinners);
+    return new TypeSafeDiagnosingMatcher<>() {
+      @Override
+      protected boolean matchesSafely(GameResult gameResult, Description mismatchDescription) {
+        final Cars winners = gameResult.winners();
+        if (winners.equals(cars)) {
+          return true;
+        }
+
+        mismatchDescription
+          .appendText("the game winner is(are) ")
+          .appendValue(winners.toString());
+        return false;
+      }
+
+      @Override
+      public void describeTo(Description description) {
+        description
+          .appendText("the game winner are ")
+          .appendValue(cars.toString());
       }
     };
   }
