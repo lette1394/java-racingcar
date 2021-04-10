@@ -3,15 +3,17 @@ package racing.domain;
 import static racing.Contracts.requires;
 
 import java.util.Comparator;
-import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
+import lombok.EqualsAndHashCode;
 import racing.BaseStream;
 
-public class Cars extends BaseStream<Car> {
-  private final List<Car> cars;
+@EqualsAndHashCode(callSuper = false)
+public class Cars extends BaseStream<Car> implements Iterable<Car> {
+  private final Set<Car> cars;
 
-  public Cars(List<Car> cars) {
+  public Cars(Set<Car> cars) {
     super(cars.stream());
     requires(cars.size() > 0, "cars.size() > 0");
     this.cars = cars;
@@ -29,13 +31,13 @@ public class Cars extends BaseStream<Car> {
 
     return new Cars(cars.stream()
       .filter(car -> car.location() == maxScore)
-      .collect(Collectors.toList()));
+      .collect(Collectors.toUnmodifiableSet()));
   }
 
   public Optional<Car> soleWinner() {
-    final List<Car> winners = winner().cars;
+    final Set<Car> winners = winner().cars;
     if (winners.size() == 1) {
-      return Optional.of(winners.get(0));
+      return Optional.of(winners.iterator().next());
     }
     return Optional.empty();
   }
@@ -46,13 +48,18 @@ public class Cars extends BaseStream<Car> {
       .collect(Collectors.toList()));
   }
 
-  private List<Car> nextCars() {
-    return cars.stream().map(Car::move).collect(Collectors.toList());
+  private Set<Car> nextCars() {
+    return cars.stream().map(Car::move).collect(Collectors.toUnmodifiableSet());
   }
 
   public Optional<Car> findCarOwnedBy(String name) {
     return cars.stream()
       .filter(car -> car.name().equals(name))
       .findAny();
+  }
+
+  @Override
+  public String toString() {
+    return cars.toString();
   }
 }

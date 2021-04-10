@@ -4,16 +4,17 @@ import static racing.Contracts.requires;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import lombok.Builder;
 import racing.domain.Car;
 import racing.domain.Cars;
 
 public class Game {
   private final int tries;
-  private final List<Car> cars;
+  private final Set<Car> cars;
 
   @Builder
-  public Game(int tries, List<Car> cars) {
+  public Game(int tries, Set<Car> cars) {
     requires(tries > 0, "tries > 0");
     requires(cars != null, "carFactory != null");
 
