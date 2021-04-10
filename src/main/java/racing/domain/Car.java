@@ -2,7 +2,9 @@ package racing.domain;
 
 import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
+@ToString(of = {"name", "location"})
 @EqualsAndHashCode(of = "name")
 @RequiredArgsConstructor
 public class Car {
