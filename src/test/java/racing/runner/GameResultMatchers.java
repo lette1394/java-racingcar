@@ -22,7 +22,7 @@ public class GameResultMatchers {
         }
 
         mismatchDescription
-          .appendText("the game winner are ")
+          .appendText("the game winners are ")
           .appendValue(String.join(", ", gameResult.winners().names()));
         return false;
       }
@@ -46,7 +46,7 @@ public class GameResultMatchers {
         }
 
         mismatchDescription
-          .appendText("the game winner is(are) ")
+          .appendText("the game winner(s) is(are) ")
           .appendValue(String.join(", ", actualWinnerNames));
         return false;
       }
@@ -54,7 +54,7 @@ public class GameResultMatchers {
       @Override
       public void describeTo(Description description) {
         description
-          .appendText("the game winner are ")
+          .appendText("the game winners are ")
           .appendValue(expectedWinnerNames);
       }
     };
@@ -75,7 +75,7 @@ public class GameResultMatchers {
         }
 
         mismatchDescription
-          .appendText("the game winner is(are) ")
+          .appendText("the game winner(s) is(are) ")
           .appendValue(winners.toString());
         return false;
       }
@@ -83,7 +83,7 @@ public class GameResultMatchers {
       @Override
       public void describeTo(Description description) {
         description
-          .appendText("the game winner are ")
+          .appendText("the game winners are ")
           .appendValue(cars.toString());
       }
     };
