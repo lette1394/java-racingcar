@@ -45,7 +45,7 @@ public class Cars extends BaseStream<Car> implements Iterable<Car> {
   public Names names() {
     return new Names(cars.stream()
       .map(Car::name)
-      .collect(Collectors.toList()));
+      .collect(Collectors.toUnmodifiableSet()));
   }
 
   private Set<Car> nextCars() {

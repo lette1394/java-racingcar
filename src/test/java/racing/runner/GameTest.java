@@ -5,30 +5,23 @@ import static org.hamcrest.Matchers.is;
 import static racing.domain.Movement.FORWARD;
 import static racing.domain.Movement.STAY;
 
-import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 import org.junit.jupiter.api.Test;
 import racing.domain.Car;
-import racing.domain.MovementPolicy;
 import racing.domain.PredefinedMovementPolicy;
 import racing.view.Printer;
 import racing.view.StringPrinter;
 import racing.view.StringWinnerPrinter;
 
 public class GameTest {
+  final Set<Car> cars = Set.of(
+    new Car("pobi", new PredefinedMovementPolicy(List.of(FORWARD, FORWARD, FORWARD, FORWARD, FORWARD))),
+    new Car("crong", new PredefinedMovementPolicy(List.of(FORWARD, STAY, FORWARD, FORWARD, FORWARD))),
+    new Car("honux", new PredefinedMovementPolicy(List.of(FORWARD, FORWARD, FORWARD, FORWARD, FORWARD))));
+
   @Test
   void test1() {
-    final MovementPolicy movementPolicy = new PredefinedMovementPolicy(Arrays.asList(
-      FORWARD, FORWARD, FORWARD,
-      FORWARD, STAY, FORWARD,
-      FORWARD, FORWARD, FORWARD,
-      FORWARD, FORWARD, FORWARD,
-      FORWARD, FORWARD, FORWARD
-    ));
-    final Set<Car> cars = Set.of(
-      new Car("pobi", movementPolicy),
-      new Car("crong", movementPolicy),
-      new Car("honux", movementPolicy));
     final Game game = Game.builder()
       .tries(5)
       .cars(cars)
@@ -56,23 +49,12 @@ public class GameTest {
       + "honux : -----";
 
     final GameResult gameResult = game.run();
-    final Printer printer = new StringPrinter();
+    final Printer printer = new StringPrinter(List.of("pobi", "crong", "honux"));
     assertThat(printer.print(gameResult), is(expected));
   }
 
   @Test
   void test2() {
-    final MovementPolicy movementPolicy = new PredefinedMovementPolicy(Arrays.asList(
-      FORWARD, FORWARD, FORWARD,
-      FORWARD, STAY, FORWARD,
-      FORWARD, FORWARD, FORWARD,
-      FORWARD, FORWARD, FORWARD,
-      FORWARD, FORWARD, FORWARD
-    ));
-    final Set<Car> cars = Set.of(
-      new Car("pobi", movementPolicy),
-      new Car("crong", movementPolicy),
-      new Car("honux", movementPolicy));
     final Game game = Game.builder()
       .tries(5)
       .cars(cars)
@@ -81,7 +63,7 @@ public class GameTest {
     final String expected = "pobi, honux가 최종 우승했습니다.";
 
     final GameResult gameResult = game.run();
-    final Printer printer = new StringWinnerPrinter();
+    final Printer printer = new StringWinnerPrinter(List.of("pobi", "crong", "honux"));
     assertThat(printer.print(gameResult), is(expected));
   }
 }

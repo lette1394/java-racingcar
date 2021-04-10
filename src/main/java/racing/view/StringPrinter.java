@@ -1,24 +1,33 @@
 package racing.view;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
+import lombok.RequiredArgsConstructor;
 import racing.domain.Car;
 import racing.domain.Cars;
 import racing.runner.GameResult;
 
+@RequiredArgsConstructor
 public class StringPrinter implements Printer {
+  private final List<String> namesOrder;
+
   @Override
   public String print(GameResult gameResult) {
     return gameResult.carsStream()
-      .map(StringPrinter::print)
+      .map(this::print)
       .collect(Collectors.joining("\n\n"));
   }
 
-  private static String print(Cars cars) {
-    return cars.map(StringPrinter::print)
+  private String print(Cars cars) {
+    return namesOrder.stream()
+      .map(cars::findCarOwnedBy)
+      .flatMap(Optional::stream)
+      .map(this::print)
       .collect(Collectors.joining("\n"));
   }
 
-  private static String print(Car car) {
+  private String print(Car car) {
     final StringBuilder sb = new StringBuilder(256);
     sb.append(car.name());
     sb.append(" : ");
