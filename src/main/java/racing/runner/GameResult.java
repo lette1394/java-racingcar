@@ -25,7 +25,7 @@ public class GameResult {
     return lastRound().soleWinner();
   }
 
-  public Cars winner() {
+  public Cars winners() {
     requires(results.size() > 0, "results.size() > 0");
     return lastRound().winner();
   }
