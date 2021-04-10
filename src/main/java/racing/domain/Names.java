@@ -40,4 +40,9 @@ public class Names extends BaseStream<String> implements Iterable<String> {
   public boolean contains(String winnerName) {
     return names.contains(new Name(winnerName));
   }
+
+  @Override
+  public String toString() {
+    return names.toString();
+  }
 }
