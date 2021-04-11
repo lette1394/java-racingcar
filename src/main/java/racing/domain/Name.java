@@ -11,10 +11,14 @@ class Name {
 
   private final String value;
 
-  public Name(String value) {
+  private Name(String value) {
     requiresBut(value.length() >= MIN_NAME_LENGTH, "value.length() <= MIN_NAME_LENGTH", value);
     requiresBut(value.length() <= MAX_NAME_LENGTH, "value.length() <= MAX_NAME_LENGTH", value);
     this.value = value;
+  }
+
+  public static Name of(String value) {
+    return new Name(value);
   }
 
   @Override

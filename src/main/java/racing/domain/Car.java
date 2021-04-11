@@ -13,7 +13,7 @@ public class Car {
   private final MovementPolicy movementPolicy;
 
   public Car(String name, MovementPolicy movementPolicy) {
-    this(new Name(name), Location.ZERO, movementPolicy);
+    this(Name.of(name), Location.ZERO, movementPolicy);
   }
 
   public String name() {

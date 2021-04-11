@@ -20,7 +20,7 @@ public class Names extends BaseStream<String> implements Iterable<String> {
   public Names(Collection<String> names) {
     super(names.stream());
     final Set<Name> collected = names.stream()
-      .map(Name::new)
+      .map(Name::of)
       .collect(toUnmodifiableSet());
 
     requires(names.size() > 0, "names.size() > 0");
