@@ -1,30 +1,28 @@
 package racing.domain;
 
-import static racing.Contracts.requires;
+import lombok.EqualsAndHashCode;
+import racing.PositiveOrZeroLong;
 
-import lombok.Value;
-
-@Value
+@EqualsAndHashCode
 class Location {
   public static Location ZERO = new Location(0L);
 
-  long value;
+  PositiveOrZeroLong value;
 
-  private Location(long value) {
-    requires(value >= 0, "value >= 0");
-    this.value = value;
-  }
-
-  public static Location at(long value) {
-    return new Location(value);
+  public Location(long value) {
+    this.value = PositiveOrZeroLong.of(value);
   }
 
   public Location increase() {
-    return new Location(value + 1);
+    return new Location(value.getValue() + 1);
+  }
+
+  public long getValue() {
+    return value.getValue();
   }
 
   @Override
   public String toString() {
-    return Long.toString(value);
+    return Long.toString(value.getValue());
   }
 }
