@@ -14,7 +14,7 @@ public class StringPrinter implements Printer {
 
   @Override
   public String print(GameResult gameResult) {
-    return gameResult.carsStream()
+    return gameResult.rounds()
       .map(this::print)
       .collect(Collectors.joining("\n\n"));
   }

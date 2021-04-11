@@ -11,7 +11,7 @@ import lombok.RequiredArgsConstructor;
 public class GameResult {
   private final List<Cars> results;
 
-  public Stream<Cars> carsStream() {
+  public Stream<Cars> rounds() {
     return results.stream();
   }
 
