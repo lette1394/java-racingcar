@@ -30,10 +30,6 @@ public class GameResult {
     return lastRound().winners();
   }
 
-  public Optional<Car> findCarOwnedBy(String name) {
-    return lastRound().findCarOwnedBy(name);
-  }
-
   private Cars lastRound() {
     return results.get(rounds() - 1);
   }

@@ -29,18 +29,6 @@ public class Names extends BaseStream<String> implements Iterable<String> {
     this.names = collected;
   }
 
-  public int size() {
-    return names.size();
-  }
-
-  public boolean containsAll(Collection<String> candidates) {
-    return equals(new Names(candidates));
-  }
-
-  public boolean contains(String winnerName) {
-    return names.contains(new Name(winnerName));
-  }
-
   @Override
   public String toString() {
     return names.toString();
