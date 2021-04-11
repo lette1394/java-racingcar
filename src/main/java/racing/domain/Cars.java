@@ -8,9 +8,11 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import lombok.EqualsAndHashCode;
 import racing.BaseStream;
+import racing.ContractsViolationException;
 
 @EqualsAndHashCode(callSuper = false)
 public class Cars extends BaseStream<Car> implements Iterable<Car> {
+  private static final int SOLE_WINNER_SIZE = 1;
   private final Set<Car> cars;
 
   public Cars(Set<Car> cars) {
@@ -27,7 +29,7 @@ public class Cars extends BaseStream<Car> implements Iterable<Car> {
     final long maxScore = cars.stream()
       .map(Car::location)
       .max(Comparator.naturalOrder())
-      .orElse(0L); // FIXME (jaeeun) 2021/04/09 make compiler happy
+      .orElseThrow(() -> new ContractsViolationException("will be never executed"));
 
     return new Cars(cars.stream()
       .filter(car -> car.location() == maxScore)
@@ -36,7 +38,7 @@ public class Cars extends BaseStream<Car> implements Iterable<Car> {
 
   public Optional<Car> soleWinner() {
     final Set<Car> winners = winners().cars;
-    if (winners.size() == 1) {
+    if (winners.size() == SOLE_WINNER_SIZE) {
       return Optional.of(winners.iterator().next());
     }
     return Optional.empty();
@@ -49,7 +51,9 @@ public class Cars extends BaseStream<Car> implements Iterable<Car> {
   }
 
   private Set<Car> nextCars() {
-    return cars.stream().map(Car::move).collect(Collectors.toUnmodifiableSet());
+    return cars.stream()
+      .map(Car::move)
+      .collect(Collectors.toUnmodifiableSet());
   }
 
   public Optional<Car> findCarOwnedBy(String name) {
