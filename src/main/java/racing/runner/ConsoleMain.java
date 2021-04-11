@@ -8,6 +8,7 @@ import racing.domain.Car;
 import racing.domain.CarFactory;
 import racing.domain.Movement;
 import racing.domain.MovementPolicy;
+import racing.domain.RandomMovementPolicy;
 import racing.view.Printer;
 import racing.view.StringPrinter;
 import racing.view.StringWinnerPrinter;
@@ -21,15 +22,11 @@ public class ConsoleMain {
     System.out.println("시도할 회수는 몇회인가요?");
     final int times = Integer.parseInt(scanner.nextLine());
 
-    final MovementPolicy random = () -> {
-      final long value = ThreadLocalRandom.current().nextLong(10);
-      if (value >= 4) {
-        return Movement.FORWARD;
-      }
-      return Movement.STAY;
-    };
-
-    final CarFactory carFactory = new CarFactory(random);
+    final RandomMovementPolicy policy = RandomMovementPolicy.builder()
+      .totalBound(10)
+      .forwardBound(4)
+      .build();
+    final CarFactory carFactory = new CarFactory(policy);
     final Set<Car> cars = carFactory.create(Set.of(names));
     final Game game = Game.builder()
       .cars(cars)
