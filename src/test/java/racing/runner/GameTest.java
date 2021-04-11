@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Set;
 import org.junit.jupiter.api.Test;
 import racing.domain.Car;
+import racing.domain.Game;
+import racing.domain.GameResult;
 import racing.domain.PredefinedMovementPolicy;
 import racing.view.Printer;
 import racing.view.StringPrinter;

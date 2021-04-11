@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import racing.domain.Car;
 import racing.domain.Cars;
-import racing.runner.GameResult;
+import racing.domain.GameResult;
 
 @RequiredArgsConstructor
 public class StringPrinter implements Printer {

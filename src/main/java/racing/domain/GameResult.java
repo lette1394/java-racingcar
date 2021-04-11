@@ -1,4 +1,4 @@
-package racing.runner;
+package racing.domain;
 
 import static racing.Contracts.requires;
 
@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 import lombok.RequiredArgsConstructor;
-import racing.domain.Car;
-import racing.domain.Cars;
 
 @RequiredArgsConstructor
 public class GameResult {

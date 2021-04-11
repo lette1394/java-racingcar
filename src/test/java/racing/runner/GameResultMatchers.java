@@ -7,6 +7,7 @@ import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeDiagnosingMatcher;
 import racing.domain.Car;
 import racing.domain.Cars;
+import racing.domain.GameResult;
 import racing.domain.Names;
 
 public class GameResultMatchers {

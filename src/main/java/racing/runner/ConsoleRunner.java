@@ -5,6 +5,8 @@ import java.util.Scanner;
 import java.util.Set;
 import racing.domain.Car;
 import racing.domain.CarFactory;
+import racing.domain.Game;
+import racing.domain.GameResult;
 import racing.domain.RandomMovementPolicy;
 import racing.view.Printer;
 import racing.view.StringPrinter;

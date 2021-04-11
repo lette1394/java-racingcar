@@ -12,6 +12,8 @@ import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racing.domain.Car;
+import racing.domain.Game;
+import racing.domain.GameResult;
 
 public class GameTest2 {
   int winningLocation;

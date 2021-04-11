@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import racing.domain.Car;
 import racing.domain.Cars;
 import racing.domain.PredefinedMovementPolicy;
-import racing.runner.GameResult;
+import racing.domain.GameResult;
 
 class StringWinnerPrinterTest {
 

@@ -1,4 +1,4 @@
-package racing.runner;
+package racing.domain;
 
 import static racing.Contracts.requires;
 
@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import lombok.Builder;
-import racing.domain.Car;
-import racing.domain.Cars;
 
 public class Game {
   private final int tries;

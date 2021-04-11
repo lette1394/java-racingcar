@@ -1,6 +1,6 @@
 package racing.view;
 
-import racing.runner.GameResult;
+import racing.domain.GameResult;
 
 @FunctionalInterface
 public interface Printer {
