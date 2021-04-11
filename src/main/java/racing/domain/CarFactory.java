@@ -1,7 +1,7 @@
 package racing.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class CarFactory {
   private final MovementPolicy movementPolicy;
@@ -14,8 +14,8 @@ public class CarFactory {
     return new Car(name, movementPolicy);
   }
 
-  public List<Car> create(List<String> names) {
-    final List<Car> result = new ArrayList<>();
+  public Set<Car> create(Set<String> names) {
+    final Set<Car> result = new HashSet<>();
     for (String name : names) {
       result.add(create(name));
     }
