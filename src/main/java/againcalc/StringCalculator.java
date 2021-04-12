@@ -21,18 +21,19 @@ public class StringCalculator {
     final String operator = matcher.group(2);
     final long rightOperand = Long.parseLong(matcher.group(3));
 
+    return operate(leftOperand, operator, rightOperand);
+  }
+
+  private long operate(long leftOperand, String operator, long rightOperand) {
     if (operator.equals("+")) {
       return leftOperand + rightOperand;
     }
-
     if (operator.equals("-")) {
       return leftOperand - rightOperand;
     }
-
     if (operator.equals("/")) {
       return leftOperand / rightOperand;
     }
-
     if (operator.equals("*")) {
       return leftOperand * rightOperand;
     }
