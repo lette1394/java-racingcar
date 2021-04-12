@@ -19,6 +19,16 @@ class StringCalculatorTest {
     assertThrows(IllegalArgumentException.class, () -> calculate(null));
   }
 
+  @Test
+  void emptyInput() {
+    assertThrows(IllegalArgumentException.class, () -> calculate(""));
+  }
+
+  @Test
+  void illegalInput() {
+    assertThrows(IllegalArgumentException.class, () -> calculate("2 & 3"));
+  }
+
   private long calculate(String expression) {
     return stringCalculator.calculate(expression);
   }
