@@ -2,9 +2,12 @@ package againcalc;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 public class StringCalculator {
-  private final Pattern pattern = Pattern.compile("(.*) ([+*/\\-]+) (\\d+)");
+  private final static Pattern pattern = Pattern.compile("(.*) ([+*/\\-]+) (\\d+)");
+  private final Operators operators;
 
   public long calculate(String expression) {
     if (expression == null) {
@@ -16,28 +19,13 @@ public class StringCalculator {
       return Long.parseLong(expression);
     }
 
-    final String restExpression = matcher.group(1);
-    final long leftOperand = calculate(restExpression);
+    final String rest = matcher.group(1);
+    final long left = calculate(rest);
     final String operator = matcher.group(2);
-    final long rightOperand = Long.parseLong(matcher.group(3));
+    final long right = Long.parseLong(matcher.group(3));
 
-    return operate(leftOperand, operator, rightOperand);
-  }
-
-  private long operate(long leftOperand, String operator, long rightOperand) {
-    if (operator.equals("+")) {
-      return leftOperand + rightOperand;
-    }
-    if (operator.equals("-")) {
-      return leftOperand - rightOperand;
-    }
-    if (operator.equals("/")) {
-      return leftOperand / rightOperand;
-    }
-    if (operator.equals("*")) {
-      return leftOperand * rightOperand;
-    }
-
-    throw new IllegalArgumentException("unsupported operator: " + operator);
+    return operators.parse(operator)
+      .compute(left, right)
+      .orElseThrow(() -> new IllegalArgumentException("illegal operator"));
   }
 }
