@@ -7,6 +7,10 @@ public class StringCalculator {
   private final Pattern pattern = Pattern.compile("(.*) ([+*/\\-]+) (\\d+)");
 
   public long calculate(String expression) {
+    if (expression == null) {
+      throw new IllegalArgumentException();
+    }
+
     final Matcher matcher = pattern.matcher(expression);
     if (!matcher.matches()) {
       return Long.parseLong(expression);
