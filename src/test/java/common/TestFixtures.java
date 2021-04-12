@@ -1,6 +1,6 @@
 package common;
 
-import static racing.Contracts.requiresBut;
+import static againracing.Contracts.requiresBut;
 
 import java.util.concurrent.ThreadLocalRandom;
 import org.apache.commons.lang3.RandomStringUtils;
