@@ -6,13 +6,16 @@ import java.util.regex.Pattern;
 
 public class Step {
   private final static Pattern pattern = Pattern.compile("(.*) ([+*/\\-]+) (\\d+)");
-  private final Matcher matcher;
   private final String expression;
+  private final Operators operators;
 
+  private final Matcher matcher;
   private final boolean matches;
 
-  public Step(String expression) {
+  public Step(String expression, Operators operators) {
     this.expression = expression;
+    this.operators = operators;
+
     this.matcher = pattern.matcher(expression);
     this.matches = this.matcher.matches();
   }
@@ -31,9 +34,9 @@ public class Step {
     return Optional.empty();
   }
 
-  public Optional<String> operator() {
+  public Optional<Operator> operator() {
     if (matches) {
-      return Optional.of(matcher.group(2));
+      return operators.parse(matcher.group(2));
     }
     return Optional.empty();
   }

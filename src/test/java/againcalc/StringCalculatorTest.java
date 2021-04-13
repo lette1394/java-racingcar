@@ -8,12 +8,14 @@ import java.util.HashMap;
 import org.junit.jupiter.api.Test;
 
 class StringCalculatorTest {
-  StringCalculator stringCalculator = new StringCalculator(new Operators(new HashMap<>() {{
+  final Operators operators = new Operators(new HashMap<>() {{
     put("+", new AddOperator());
     put("-", new SubtractOperator());
     put("*", new MultiplyOperator());
     put("/", new DivideOperator());
-  }}));
+  }});
+  final StepFactory stepFactory = new StepFactory(operators);
+  final StringCalculator stringCalculator = new StringCalculator(stepFactory);
 
   @Test
   void test1() {
