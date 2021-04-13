@@ -9,7 +9,7 @@ public class OptionalOperator {
   @Delegate
   private final Optional<Operator> holder;
 
-  public Optional<Long> compute(long left, long right) {
-    return holder.map(operator -> operator.compute(left, right));
+  public Optional<Long> compute(Optional<Long> left, Optional<Long> right) {
+    return holder.flatMap(operator -> left.flatMap(l -> right.map(r -> operator.compute(l, r))));
   }
 }

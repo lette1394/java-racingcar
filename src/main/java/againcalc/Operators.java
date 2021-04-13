@@ -8,10 +8,10 @@ import lombok.RequiredArgsConstructor;
 public class Operators {
   private final Map<String, Operator> operators;
 
-  public OptionalOperator parse(String operator) {
+  public Optional<Operator> parse(String operator) {
     if (operators.containsKey(operator)) {
-      return new OptionalOperator(Optional.of(operators.get(operator)));
+      return Optional.of(operators.get(operator));
     }
-    return new OptionalOperator(Optional.empty());
+    return Optional.empty();
   }
 }

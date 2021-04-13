@@ -1,6 +1,6 @@
 package againcalc;
 
-import java.util.regex.Matcher;
+import java.util.Optional;
 import java.util.regex.Pattern;
 import lombok.RequiredArgsConstructor;
 
@@ -14,18 +14,13 @@ public class StringCalculator {
       throw new IllegalArgumentException();
     }
 
-    final Matcher matcher = pattern.matcher(expression);
-    if (!matcher.matches()) {
-      return Long.parseLong(expression);
-    }
+    final Step step = new Step(expression);
+    final Optional<Long> left = step.rest().map(this::calculate);
+    final Optional<Long> right = step.right();
+    final Optional<Operator> operator = step.operator().flatMap(operators::parse);
 
-    final String rest = matcher.group(1);
-    final long left = calculate(rest);
-    final String operator = matcher.group(2);
-    final long right = Long.parseLong(matcher.group(3));
-
-    return operators.parse(operator)
-      .compute(left, right)
+    return operator.flatMap(op -> left.flatMap(l -> right.map(r -> op.compute(l, r))))
+      .or(step::single)
       .orElseThrow(() -> new IllegalArgumentException("illegal operator"));
   }
 }
