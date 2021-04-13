@@ -34,14 +34,14 @@ public class Step {
     return Optional.empty();
   }
 
-  public Optional<Operator> operator() {
+  public OptionalOperator operator() {
     if (matches) {
-      return operators.parse(matcher.group(2));
+      return new OptionalOperator(operators.parse(matcher.group(2)));
     }
-    return Optional.empty();
+    return new OptionalOperator(Optional.empty());
   }
 
-  public Optional<String> rest() {
+  public Optional<String> left() {
     if (matches) {
       return Optional.of(matcher.group(1));
     }
