@@ -5,7 +5,7 @@ import againracing.domain.RandomMovementPolicy;
 import againracing.view.PrinterFactory;
 import againracing.view.SequencePrinter;
 import againracing.view.CarHistoryPrinter;
-import againracing.view.StringWinnerPrinter;
+import againracing.view.FinalWinnerPrinter;
 import java.util.List;
 
 public class Main {
@@ -20,7 +20,7 @@ public class Main {
       __ -> "\n",
       new CarHistoryPrinter(nameOrder),
       __ -> "\n\n",
-      new StringWinnerPrinter(nameOrder)));
+      new FinalWinnerPrinter(nameOrder)));
 
     final ConsoleRunner runner = ConsoleRunner.builder()
       .inputStream(System.in)

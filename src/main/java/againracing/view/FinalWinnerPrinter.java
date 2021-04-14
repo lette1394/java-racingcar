@@ -9,7 +9,7 @@ import againracing.domain.Cars;
 import againracing.domain.GameResult;
 
 @RequiredArgsConstructor
-public class StringWinnerPrinter implements Printer {
+public class FinalWinnerPrinter implements Printer {
   private final List<String> namesOrder;
 
   @Override

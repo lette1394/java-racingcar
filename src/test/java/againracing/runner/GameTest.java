@@ -14,7 +14,7 @@ import againracing.domain.GameResult;
 import againracing.domain.PredefinedMovementPolicy;
 import againracing.view.Printer;
 import againracing.view.CarHistoryPrinter;
-import againracing.view.StringWinnerPrinter;
+import againracing.view.FinalWinnerPrinter;
 
 public class GameTest {
   final Set<Car> cars = Set.of(
@@ -65,7 +65,7 @@ public class GameTest {
     final String expected = "pobi, honux가 최종 우승했습니다.";
 
     final GameResult gameResult = game.run();
-    final Printer printer = new StringWinnerPrinter(List.of("pobi", "crong", "honux"));
+    final Printer printer = new FinalWinnerPrinter(List.of("pobi", "crong", "honux"));
     assertThat(printer.print(gameResult), is(expected));
   }
 }

@@ -14,11 +14,11 @@ import againracing.domain.Cars;
 import againracing.domain.PredefinedMovementPolicy;
 import againracing.domain.GameResult;
 
-class StringWinnerPrinterTest {
+class FinalWinnerPrinterTest {
 
   @Test
   void test1() {
-    final Printer printer = new StringWinnerPrinter(List.of("car3", "car2", "car1"));
+    final Printer printer = new FinalWinnerPrinter(List.of("car3", "car2", "car1"));
     final List<Cars> history = new ArrayList<>();
 
     Cars cars = new Cars(Set.of(
