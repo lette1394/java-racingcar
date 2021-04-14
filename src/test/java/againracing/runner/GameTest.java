@@ -13,7 +13,7 @@ import againracing.domain.Game;
 import againracing.domain.GameResult;
 import againracing.domain.PredefinedMovementPolicy;
 import againracing.view.Printer;
-import againracing.view.StringPrinter;
+import againracing.view.CarHistoryPrinter;
 import againracing.view.StringWinnerPrinter;
 
 public class GameTest {
@@ -51,7 +51,7 @@ public class GameTest {
       + "honux : -----";
 
     final GameResult gameResult = game.run();
-    final Printer printer = new StringPrinter(List.of("pobi", "crong", "honux"));
+    final Printer printer = new CarHistoryPrinter(List.of("pobi", "crong", "honux"));
     assertThat(printer.print(gameResult), is(expected));
   }
 

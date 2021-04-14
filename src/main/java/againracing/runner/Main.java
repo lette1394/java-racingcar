@@ -4,7 +4,7 @@ import againracing.domain.CarFactory;
 import againracing.domain.RandomMovementPolicy;
 import againracing.view.PrinterFactory;
 import againracing.view.SequencePrinter;
-import againracing.view.StringPrinter;
+import againracing.view.CarHistoryPrinter;
 import againracing.view.StringWinnerPrinter;
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class Main {
 
     final PrinterFactory printerFactory = nameOrder -> new SequencePrinter(List.of(
       __ -> "\n",
-      new StringPrinter(nameOrder),
+      new CarHistoryPrinter(nameOrder),
       __ -> "\n\n",
       new StringWinnerPrinter(nameOrder)));
 
