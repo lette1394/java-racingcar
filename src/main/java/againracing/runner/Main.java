@@ -7,6 +7,7 @@ import static againracing.view.Printers.sequence;
 
 import againracing.domain.CarFactory;
 import againracing.domain.RandomMovementPolicy;
+import againracing.view.IO;
 import againracing.view.PrinterFactory;
 import java.util.List;
 
@@ -21,10 +22,13 @@ public class Main {
       carHistory(namesOrder),
       lineBreak(2),
       finalWinner(namesOrder)));
-
-    final ConsoleRunner runner = ConsoleRunner.builder()
+    final IO io = IO.builder()
       .inputStream(System.in)
       .outputStream(System.out)
+      .build();
+
+    final ConsoleRunner runner = ConsoleRunner.builder()
+      .io(io)
       .carFactory(carFactory)
       .printerFactory(printerFactory)
       .build();
