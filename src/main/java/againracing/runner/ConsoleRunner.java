@@ -37,13 +37,13 @@ public class ConsoleRunner {
 
   private int getTries() {
     io.println("시도할 회수는 몇회인가요?");
-    final int times = Integer.parseInt(io.nextLine());
-    return times;
+    // FIXME (jaeeun) 2021/04/15: need validation: positive
+    return Integer.parseInt(io.nextLine());
   }
 
   private String[] getNames() {
     io.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-    final String[] names = io.nextLine().split(",");
-    return names;
+    // FIXME (jaeeun) 2021/04/15: need validation: check duplication, (,) format, ...
+    return io.nextLine().split(",");
   }
 }
