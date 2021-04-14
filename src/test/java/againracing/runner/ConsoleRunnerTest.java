@@ -30,6 +30,7 @@ class ConsoleRunnerTest {
 
   @BeforeEach
   void beforeEach() {
+    // FIXME (jaeeun) 2021/04/15: remove magic strings: pobi, crong, ...
     final Set<Car> predefinedCars = Set.of(
       new Car("pobi", new PredefinedMovementPolicy(List.of(FORWARD, FORWARD, FORWARD, FORWARD, FORWARD))),
       new Car("crong", new PredefinedMovementPolicy(List.of(FORWARD, STAY, FORWARD, FORWARD, FORWARD))),
