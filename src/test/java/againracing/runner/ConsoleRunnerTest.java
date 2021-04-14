@@ -80,6 +80,7 @@ class ConsoleRunnerTest {
       + "honux : -----\n"
       + "\n"
       + "pobi, honux가 최종 우승했습니다.\n";
+
     assertThat(getConsoleOutput(), is(expected));
   }
 
