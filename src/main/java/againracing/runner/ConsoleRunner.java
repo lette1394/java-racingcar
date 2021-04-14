@@ -13,13 +13,11 @@ import againracing.view.StringPrinter;
 import againracing.view.StringWinnerPrinter;
 
 public class ConsoleRunner {
+  private static final Scanner scanner = new Scanner(System.in);
+
   public static void main(String[] args) {
-    System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-    final Scanner scanner = new Scanner(System.in);
-    // TODO: remove duplicate
-    final String[] names = scanner.nextLine().split(",");
-    System.out.println("시도할 회수는 몇회인가요?");
-    final int times = Integer.parseInt(scanner.nextLine());
+    final String[] names = getNames();
+    final int times = getTimes();
 
     final RandomMovementPolicy policy = RandomMovementPolicy.builder()
       .totalBound(10)
@@ -40,5 +38,17 @@ public class ConsoleRunner {
 
     final Printer print2 = new StringWinnerPrinter(Arrays.asList(names));
     System.out.println(print2.print(gameResult));
+  }
+
+  private static int getTimes() {
+    System.out.println("시도할 회수는 몇회인가요?");
+    final int times = Integer.parseInt(scanner.nextLine());
+    return times;
+  }
+
+  private static String[] getNames() {
+    System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+    final String[] names = scanner.nextLine().split(",");
+    return names;
   }
 }
