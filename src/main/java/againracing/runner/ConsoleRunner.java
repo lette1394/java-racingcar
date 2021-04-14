@@ -1,8 +1,5 @@
 package againracing.runner;
 
-import java.util.Arrays;
-import java.util.Scanner;
-import java.util.Set;
 import againracing.domain.Car;
 import againracing.domain.CarFactory;
 import againracing.domain.Game;
@@ -11,11 +8,20 @@ import againracing.domain.RandomMovementPolicy;
 import againracing.view.Printer;
 import againracing.view.StringPrinter;
 import againracing.view.StringWinnerPrinter;
+import java.io.InputStream;
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.Set;
 
 public class ConsoleRunner {
-  private static final Scanner scanner = new Scanner(System.in);
 
-  public static void main(String[] args) {
+  private final Scanner scanner;
+
+  public ConsoleRunner(InputStream inputStream) {
+    scanner = new Scanner(inputStream);
+  }
+
+  public void run() {
     final String[] names = getNames();
     final int times = getTimes();
 
@@ -40,13 +46,13 @@ public class ConsoleRunner {
     System.out.println(print2.print(gameResult));
   }
 
-  private static int getTimes() {
+  private int getTimes() {
     System.out.println("시도할 회수는 몇회인가요?");
     final int times = Integer.parseInt(scanner.nextLine());
     return times;
   }
 
-  private static String[] getNames() {
+  private String[] getNames() {
     System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
     final String[] names = scanner.nextLine().split(",");
     return names;
