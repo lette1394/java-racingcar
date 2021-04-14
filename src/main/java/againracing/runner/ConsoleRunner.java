@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Set;
 import lombok.Builder;
 
-public class ConsoleRunner {
+public class ConsoleRunner implements Runner {
   private final IO io;
   private final CarFactory carFactory;
   private final PrinterFactory printerFactory;
@@ -24,6 +24,7 @@ public class ConsoleRunner {
     this.printerFactory = printerFactory;
   }
 
+  @Override
   public void run() {
     final String[] names = getNames();
     final Game game = Game.builder()

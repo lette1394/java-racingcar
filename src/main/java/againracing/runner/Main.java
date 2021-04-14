@@ -28,7 +28,7 @@ public class Main {
       .outputStream(System.out)
       .build();
 
-    final ConsoleRunner runner = ConsoleRunner.builder()
+    final Runner runner = ConsoleRunner.builder()
       .io(io)
       .carFactory(carFactory)
       .printerFactory(printerFactory)
