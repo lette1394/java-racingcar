@@ -1,0 +1,39 @@
+package againracing.runner;
+
+import static againracing.view.Printers.carHistory;
+import static againracing.view.Printers.finalWinner;
+import static againracing.view.Printers.lineBreak;
+import static againracing.view.Printers.sequence;
+
+import againracing.domain.CarFactory;
+import againracing.domain.MovementPolicyCarFactory;
+import againracing.domain.RandomMovementPolicy;
+import againracing.view.IO;
+import againracing.view.PrinterFactory;
+import java.util.List;
+
+public class Main {
+  public static void main(String[] args) {
+    final CarFactory carFactory = new MovementPolicyCarFactory(RandomMovementPolicy.builder()
+      .totalBound(10)
+      .forwardBound(4)
+      .build());
+    final PrinterFactory printerFactory = namesOrder -> sequence(List.of(
+      lineBreak(1),
+      carHistory(namesOrder),
+      lineBreak(2),
+      finalWinner(namesOrder)));
+    final IO io = IO.builder()
+      .inputStream(System.in)
+      .outputStream(System.out)
+      .build();
+
+    final Runner runner = ConsoleRunner.builder()
+      .io(io)
+      .carFactory(carFactory)
+      .printerFactory(printerFactory)
+      .build();
+
+    runner.run();
+  }
+}
