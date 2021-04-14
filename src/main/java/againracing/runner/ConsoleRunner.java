@@ -1,49 +1,41 @@
 package againracing.runner;
 
-import againracing.domain.Car;
 import againracing.domain.CarFactory;
 import againracing.domain.Game;
-import againracing.domain.GameResult;
 import againracing.view.Printer;
-import againracing.view.StringPrinter;
-import againracing.view.StringWinnerPrinter;
+import againracing.view.PrinterFactory;
 import java.io.InputStream;
-import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 import lombok.Builder;
 
 public class ConsoleRunner {
-
   private final Scanner scanner;
   private final CarFactory carFactory;
+  private final PrinterFactory printerFactory;
 
   @Builder
-  public ConsoleRunner(InputStream inputStream, CarFactory carFactory) {
+  public ConsoleRunner(InputStream inputStream,
+    CarFactory carFactory,
+    PrinterFactory printerFactory) {
     this.scanner = new Scanner(inputStream);
     this.carFactory = carFactory;
+    this.printerFactory = printerFactory;
   }
 
   public void run() {
     final String[] names = getNames();
-    final int times = getTimes();
-    final Set<Car> cars = carFactory.create(Set.of(names));
     final Game game = Game.builder()
-      .cars(cars)
-      .tries(times)
+      .cars(carFactory.create(Set.of(names)))
+      .tries(getTries())
       .build();
 
-    System.out.println();
-    System.out.println("실행 결과");
-    final GameResult gameResult = game.run();
-    final Printer print1 = new StringPrinter(Arrays.asList(names));
-    System.out.println(print1.print(gameResult));
-
-    final Printer print2 = new StringWinnerPrinter(Arrays.asList(names));
-    System.out.println(print2.print(gameResult));
+    final Printer printer = printerFactory.create(List.of(names));
+    System.out.println(printer.print(game.run()));
   }
 
-  private int getTimes() {
+  private int getTries() {
     System.out.println("시도할 회수는 몇회인가요?");
     final int times = Integer.parseInt(scanner.nextLine());
     return times;
