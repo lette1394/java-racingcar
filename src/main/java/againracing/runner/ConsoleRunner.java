@@ -32,7 +32,7 @@ public class ConsoleRunner {
       .build();
 
     final Printer printer = printerFactory.create(List.of(names));
-    io.println(printer.print(game.run()));
+    io.print(printer.print(game.run()));
   }
 
   private int getTries() {

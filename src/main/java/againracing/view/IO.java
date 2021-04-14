@@ -20,7 +20,11 @@ public class IO {
     return scanner.nextLine();
   }
 
-  public void println(String x) {
-    printStream.println(x);
+  public void println(String value) {
+    printStream.println(value);
+  }
+
+  public void print(String value) {
+    printStream.print(value);
   }
 }

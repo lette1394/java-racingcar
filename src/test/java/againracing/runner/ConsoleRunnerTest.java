@@ -79,7 +79,7 @@ class ConsoleRunnerTest {
       + "crong : ----\n"
       + "honux : -----\n"
       + "\n"
-      + "pobi, honux가 최종 우승했습니다.\n";
+      + "pobi, honux가 최종 우승했습니다.";
 
     assertThat(getConsoleOutput(), is(expected));
   }
