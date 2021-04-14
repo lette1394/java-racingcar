@@ -4,7 +4,6 @@ import againracing.domain.Car;
 import againracing.domain.CarFactory;
 import againracing.domain.Game;
 import againracing.domain.GameResult;
-import againracing.domain.RandomMovementPolicy;
 import againracing.view.Printer;
 import againracing.view.StringPrinter;
 import againracing.view.StringWinnerPrinter;
@@ -12,24 +11,22 @@ import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Set;
+import lombok.Builder;
 
 public class ConsoleRunner {
 
   private final Scanner scanner;
+  private final CarFactory carFactory;
 
-  public ConsoleRunner(InputStream inputStream) {
-    scanner = new Scanner(inputStream);
+  @Builder
+  public ConsoleRunner(InputStream inputStream, CarFactory carFactory) {
+    this.scanner = new Scanner(inputStream);
+    this.carFactory = carFactory;
   }
 
   public void run() {
     final String[] names = getNames();
     final int times = getTimes();
-
-    final RandomMovementPolicy policy = RandomMovementPolicy.builder()
-      .totalBound(10)
-      .forwardBound(4)
-      .build();
-    final CarFactory carFactory = new CarFactory(policy);
     final Set<Car> cars = carFactory.create(Set.of(names));
     final Game game = Game.builder()
       .cars(cars)
