@@ -7,7 +7,7 @@ import againracing.PositiveOrZeroLong;
 class Location {
   public static Location ZERO = new Location(0L);
 
-  PositiveOrZeroLong value;
+  private final PositiveOrZeroLong value;
 
   public Location(long value) {
     this.value = PositiveOrZeroLong.of(value);
